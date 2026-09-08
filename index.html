@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title id="titulo-pagina">Agendamento Online</title>
+
+    <link
+        rel="stylesheet"
+        href="css/cliente.css"
+    >
+
+     <link
+        rel="stylesheet"
+        href="css/tema.css"
+    >
+</head>
+
+<body>
+
+    <main class="app-agendamento">
+
+        <!-- TOPO -->
+        <header class="topo">
+
+            <div class="marca">
+                <div
+                    id="marca-simbolo"
+                    class="marca-simbolo"
+                >
+                    B
+                </div>
+
+                <div>
+                    <strong id="marca-nome">
+                        BARBEARIA
+                    </strong>
+
+                    <span id="marca-subtitulo">
+                        AGENDAMENTO ONLINE
+                    </span>
+                </div>
+            </div>
+
+            <button
+                class="botao-meu-agendamento"
+                type="button"
+            >
+                Meu agendamento
+            </button>
+
+            <button
+
+             class="botao-tema"
+             type="button"
+             aria-label="Alternar tema"
+            >
+             🌙
+             </button>
+
+        </header>
+
+
+        <!-- PROGRESSO -->
+        <section class="progresso">
+
+            <div class="progresso-texto">
+                <span id="etapa-atual-texto">
+                    Etapa 1 de 6
+                </span>
+
+                <span id="porcentagem-progresso">
+                    16%
+                </span>
+            </div>
+
+            <div class="barra-progresso">
+                <div
+                    id="barra-progresso-preenchimento"
+                    class="barra-progresso-preenchimento"
+                ></div>
+            </div>
+
+        </section>
+
+
+        <!-- CONTEÚDO -->
+        <section class="conteudo-agendamento">
+
+
+            <!-- ======================================
+                 ETAPA 1 - SERVIÇOS
+            ======================================= -->
+            <section
+                class="etapa ativa"
+                data-etapa="1"
+            >
+
+                <div class="cabecalho-etapa">
+
+                    <span
+                        id="etiqueta-barbearia"
+                        class="etiqueta"
+                    >
+                        AGENDAMENTO ONLINE
+                    </span>
+
+                    <h1>
+                        O que você deseja fazer?
+                    </h1>
+
+                    <p>
+                        Selecione um ou mais serviços.
+                        Você pode combinar como quiser.
+                    </p>
+
+                </div>
+
+
+                <div
+                    id="lista-servicos"
+                    class="lista-servicos"
+                >
+
+                    <div class="estado-carregando">
+                        <div class="loader"></div>
+
+                        <p>
+                            Carregando serviços...
+                        </p>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- ======================================
+                 ETAPA 2 - PROFISSIONAL
+            ======================================= -->
+            <section
+                class="etapa"
+                data-etapa="2"
+            >
+
+                <div class="cabecalho-etapa">
+
+                    <span class="etiqueta">
+                        PROFISSIONAL
+                    </span>
+
+                    <h1>
+                        Com quem você quer agendar?
+                    </h1>
+
+                    <p>
+                        Mostraremos apenas profissionais
+                        disponíveis para todos os serviços
+                        escolhidos.
+                    </p>
+
+                </div>
+
+
+                <div
+                    id="lista-profissionais"
+                    class="lista-profissionais"
+                ></div>
+
+            </section>
+
+
+
+            <!-- ======================================
+                 ETAPA 3 - DATA
+            ======================================= -->
+            <section
+                class="etapa"
+                data-etapa="3"
+            >
+
+                <div class="cabecalho-etapa">
+
+                    <span class="etiqueta">
+                        DATA
+                    </span>
+
+                    <h1>
+                        Escolha o melhor dia.
+                    </h1>
+
+                    <p>
+                        Os dias indisponíveis serão
+                        automaticamente bloqueados.
+                    </p>
+
+                </div>
+
+
+                <div class="calendario">
+
+                    <div class="calendario-topo">
+
+                        <button
+                            id="mes-anterior"
+                            class="botao-calendario"
+                            type="button"
+                        >
+                            ←
+                        </button>
+
+                        <h2 id="titulo-mes">
+                            Setembro 2026
+                        </h2>
+
+                        <button
+                            id="proximo-mes"
+                            class="botao-calendario"
+                            type="button"
+                        >
+                            →
+
+                    </div>
+
+
+                    <div class="dias-semana">
+
+                        <span>DOM</span>
+                        <span>SEG</span>
+                        <span>TER</span>
+                        <span>QUA</span>
+                        <span>QUI</span>
+                        <span>SEX</span>
+                        <span>SÁB</span>
+
+                    </div>
+
+
+                    <div
+                        id="dias-calendario"
+                        class="dias-calendario"
+                    ></div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- ======================================
+                 ETAPA 4 - HORÁRIO
+            ======================================= -->
+            <section
+                class="etapa"
+                data-etapa="4"
+            >
+
+                <div class="cabecalho-etapa">
+
+                    <span class="etiqueta">
+                        HORÁRIO
+                    </span>
+
+                    <h1>
+                        Qual horário funciona melhor?
+                    </h1>
+
+                    <p id="data-horarios">
+                        Selecione um horário disponível.
+                    </p>
+
+                </div>
+
+
+                <div
+                    id="lista-horarios"
+                    class="lista-horarios"
+                ></div>
+
+            </section>
+
+
+
+            <!-- ======================================
+                 ETAPA 5 - DADOS
+            ======================================= -->
+            <section
+                class="etapa"
+                data-etapa="5"
+            >
+
+                <div class="cabecalho-etapa">
+
+                    <span class="etiqueta">
+                        SEUS DADOS
+                    </span>
+
+                    <h1>
+                        Estamos quase lá.
+                    </h1>
+
+                    <p>
+                        Precisamos apenas dos seus dados
+                        para identificar o agendamento.
+                    </p>
+
+                </div>
+
+
+                <form
+                    id="formulario-cliente"
+                    class="formulario-cliente"
+                >
+
+                    <div class="campo">
+
+                        <label for="cliente-nome">
+                            Nome completo
+                        </label>
+
+                        <input
+                            id="cliente-nome"
+                            type="text"
+                            placeholder="Digite seu nome"
+                            autocomplete="name"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="campo">
+
+                        <label for="cliente-whatsapp">
+                            WhatsApp
+                        </label>
+
+                        <input
+                            id="cliente-whatsapp"
+                            type="tel"
+                            placeholder="(11) 99999-9999"
+                            autocomplete="tel"
+                            required
+                        >
+
+                    </div>
+
+                </form>
+
+            </section>
+
+
+
+            <!-- ======================================
+                 ETAPA 6 - REVISÃO
+            ======================================= -->
+            <section
+                class="etapa"
+                data-etapa="6"
+            >
+
+                <div class="cabecalho-etapa">
+
+                    <span class="etiqueta">
+                        CONFIRMAÇÃO
+                    </span>
+
+                    <h1>
+                        Confira seu agendamento.
+                    </h1>
+
+                    <p>
+                        Revise os dados antes de confirmar.
+                    </p>
+
+                </div>
+
+
+                <div
+                    id="resumo-final"
+                    class="resumo-final"
+                ></div>
+
+            </section>
+
+
+            <!-- ======================================
+                 SUCESSO
+            ======================================= -->
+            <section
+                id="tela-sucesso"
+                class="tela-sucesso"
+            >
+
+                <div class="icone-sucesso">
+                    ✓
+                </div>
+
+                <span class="etiqueta">
+                    AGENDAMENTO REALIZADO
+                </span>
+
+                <h1>
+                    Horário reservado.
+                </h1>
+
+                <p>
+                    Seu agendamento foi registrado com
+                    sucesso.
+                </p>
+
+                <div
+                    id="resumo-sucesso"
+                    class="resumo-sucesso"
+                ></div>
+
+                <button
+                    id="novo-agendamento"
+                    class="botao-secundario"
+                    type="button"
+                >
+                    Fazer outro agendamento
+                </button>
+
+            </section>
+
+        </section>
+
+
+        <!-- RODAPÉ FIXO DA ETAPA -->
+        <footer
+            id="rodape-agendamento"
+            class="rodape-agendamento"
+        >
+
+            <button
+                id="botao-voltar"
+                class="botao-voltar"
+                type="button"
+                disabled
+            >
+                ← Voltar
+            </button>
+
+
+            <div
+                id="resumo-rapido"
+                class="resumo-rapido"
+            >
+
+                <span>
+                    Nenhum serviço selecionado
+                </span>
+
+            </div>
+
+
+            <button
+                id="botao-continuar"
+                class="botao-continuar"
+                type="button"
+                disabled
+            >
+                Continuar
+                <span>→</span>
+            </button>
+
+        </footer>
+
+    </main>
+
+
+    <!-- SUPABASE -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <script src="js/supabase.js"></script>
+
+    <script src="js/agendamento.js"></script>
+
+    <script src="js/tema.js"></script>
+
+</body>
+
+</html>

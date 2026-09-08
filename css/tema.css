@@ -1,0 +1,268 @@
+/* =========================================================
+   BARBER SAAS — SISTEMA GLOBAL DE TEMA
+========================================================= */
+
+:root {
+
+    color-scheme: light;
+
+}
+
+
+/* =========================================================
+   TEMA ESCURO
+========================================================= */
+
+body.tema-escuro {
+
+    color-scheme: dark;
+
+    --preto: #f5f5f7;
+
+    --grafite: #18181b;
+    --grafite-claro: #242428;
+
+    --branco: #171719;
+
+    --fundo: #0d0d0f;
+
+    --cinza-100: #202024;
+    --cinza-200: #303035;
+    --cinza-400: #8e8e96;
+    --cinza-600: #b0b0b7;
+    --cinza-800: #e5e5e8;
+
+    --vermelho-claro: #2b1517;
+
+    background: var(--fundo);
+
+    color: #f5f5f7;
+}
+
+
+/* CAMPOS */
+
+body.tema-escuro input,
+body.tema-escuro select,
+body.tema-escuro textarea {
+
+    background: #202024;
+
+    color: #f5f5f7;
+
+    border-color: #303035;
+}
+
+
+body.tema-escuro input::placeholder,
+body.tema-escuro textarea::placeholder {
+
+    color: #7d7d85;
+}
+
+
+/* CARDS */
+
+body.tema-escuro .card-servico,
+body.tema-escuro .card-profissional,
+body.tema-escuro .calendario,
+body.tema-escuro .formulario-cliente,
+body.tema-escuro .resumo-final,
+body.tema-escuro .resumo-sucesso,
+body.tema-escuro .agenda-principal,
+body.tema-escuro .agenda-controles,
+body.tema-escuro .card-admin,
+body.tema-escuro .modal-card {
+
+    background: #171719;
+
+    border-color: #303035;
+}
+
+
+/* ÁREA ADMIN */
+
+body.tema-escuro .admin-main {
+
+    background: #0d0d0f;
+}
+
+
+body.tema-escuro .sidebar {
+
+    background: #070708;
+}
+
+
+/* CLIENTE */
+
+body.tema-escuro .progresso {
+
+    background: #171719;
+}
+
+
+body.tema-escuro .rodape-agendamento {
+
+    background:
+        rgba(23, 23, 25, 0.94);
+
+    border-color: #303035;
+}
+
+
+/* CALENDÁRIO */
+
+body.tema-escuro .botao-calendario,
+body.tema-escuro .controle-data button {
+
+    background: #252529;
+
+    color: white;
+}
+
+
+body.tema-escuro .dia-calendario:hover {
+
+    background: #252529;
+}
+
+
+/* HORÁRIOS */
+
+body.tema-escuro .horario {
+
+    background: #171719;
+
+    color: #f5f5f7;
+
+    border-color: #303035;
+}
+
+
+body.tema-escuro .horario:hover {
+
+    border-color: #66666e;
+}
+
+
+body.tema-escuro .horario.selecionado {
+
+    background: var(--vermelho);
+
+    border-color: var(--vermelho);
+
+    color: white;
+}
+
+
+/* EVENTOS DA AGENDA */
+
+body.tema-escuro .evento-agenda {
+
+    background: #1d1d20;
+
+    border-color: #303035;
+}
+
+
+body.tema-escuro .evento-agenda.bloqueio {
+
+    background: #291517;
+}
+
+
+/* BOTÃO GLOBAL */
+
+.botao-tema {
+
+    width: 44px;
+    height: 44px;
+
+    flex-shrink: 0;
+
+    border-radius: 11px;
+
+    border: 1px solid var(--cinza-200);
+
+    background: var(--branco);
+
+    color: var(--preto);
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+
+    font-size: 17px;
+
+    transition:
+        transform .2s,
+        background .2s;
+}
+
+
+.botao-tema:hover {
+
+    transform: translateY(-1px);
+}
+
+/* =========================================================
+   AGENDA VISUAL — TEMA ESCURO
+========================================================= */
+
+body.tema-escuro
+.evento-agenda-visual.agendamento {
+
+    background: #222226;
+
+    color: #f5f5f7;
+
+    border-left-color: #f5f5f7;
+}
+
+
+body.tema-escuro
+.evento-agenda-visual.bloqueio {
+
+    background: #351719;
+}
+
+
+body.tema-escuro
+.agenda-grade {
+
+    border-color: #303035;
+}
+
+
+body.tema-escuro
+.agenda-linha-hora {
+
+    background: #303035;
+}
+
+
+body.tema-escuro
+.agenda-linha-meia-hora {
+
+    border-color: #303035;
+}
+body.tema-escuro .dia-expediente:not(.ativo) {
+    background: #1a1a1d;
+    border-color: #303035;
+}
+
+body.tema-escuro .dia-expediente:not(.ativo)
+.dia-expediente-identificacao {
+    opacity: .6;
+}
+
+body.tema-escuro .dia-expediente:not(.ativo)
+.campo-horario input {
+    background: #202024;
+    color: #77777f;
+    border-color: #303035;
+}

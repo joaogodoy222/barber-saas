@@ -1,0 +1,1650 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Painel Administrativo | Barbearia Rodrigo Lima
+    </title>
+
+    <!-- CSS ADMINISTRATIVO -->
+    <link
+        rel="stylesheet"
+        href="../css/admin.css"
+    >
+
+    <!-- TEMA GLOBAL -->
+    <link
+        rel="stylesheet"
+        href="../css/tema.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         LOGIN
+    ====================================================== -->
+
+    <section
+        id="login-admin"
+        class="login-admin"
+    >
+
+        <div class="login-admin-card">
+
+            <div class="login-admin-marca">
+
+                <div class="login-admin-logo">
+                    RL
+                </div>
+
+                <div>
+                    <strong>
+                        Rodrigo Lima
+                    </strong>
+
+                    <span>
+                        Barbearia
+                    </span>
+                </div>
+
+            </div>
+
+
+            <div class="login-admin-texto">
+
+                <span class="admin-etiqueta">
+                    ÁREA ADMINISTRATIVA
+                </span>
+
+                <h1>
+                    Bem-vindo de volta.
+                </h1>
+
+                <p>
+                    Entre com seus dados para acessar
+                    o painel da barbearia.
+                </p>
+
+            </div>
+
+
+            <form
+                id="form-login-admin"
+                class="login-admin-form"
+            >
+
+                <div class="campo-admin">
+
+                    <label for="email-admin">
+                        E-mail
+                    </label>
+
+                    <input
+                        id="email-admin"
+                        type="email"
+                        autocomplete="email"
+                        placeholder="seu@email.com"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="campo-admin">
+
+                    <label for="senha-admin">
+                        Senha
+                    </label>
+
+                    <input
+                        id="senha-admin"
+                        type="password"
+                        autocomplete="current-password"
+                        placeholder="Digite sua senha"
+                        required
+                    >
+
+                </div>
+
+
+                <p
+                    id="mensagem-login"
+                    class="mensagem-login"
+                ></p>
+
+
+                <button
+                    id="botao-login"
+                    class="botao-principal-admin login-admin-botao"
+                    type="submit"
+                >
+                    Entrar
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         PAINEL ADMINISTRATIVO
+    ====================================================== -->
+
+    <main
+        id="painel-admin"
+        style="display: none;"
+    >
+
+
+        <!-- =================================================
+             SIDEBAR
+        ================================================== -->
+
+        <aside class="sidebar">
+
+            <div class="sidebar-logo">
+
+                <div class="sidebar-logo-simbolo">
+                    RL
+                </div>
+
+                <div class="sidebar-logo-texto">
+
+                    <strong>
+                        Rodrigo Lima
+                    </strong>
+
+                    <span>
+                        Barbearia
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <nav class="sidebar-menu">
+
+                <button
+                    class="admin-menu-item ativo"
+                    data-pagina="visao-geral"
+                    type="button"
+                >
+                    <span class="admin-menu-icone">
+                        ◫
+                    </span>
+
+                    <span>
+                        Visão geral
+                    </span>
+                </button>
+
+
+                <button
+                    class="admin-menu-item"
+                    data-pagina="agenda"
+                    type="button"
+                >
+                    <span class="admin-menu-icone">
+                        ◷
+                    </span>
+
+                    <span>
+                        Agenda
+                    </span>
+                </button>
+
+
+                <button
+                    class="admin-menu-item"
+                    data-pagina="clientes"
+                    type="button"
+                >
+                    <span class="admin-menu-icone">
+                        ♙
+                    </span>
+
+                    <span>
+                        Clientes
+                    </span>
+                </button>
+
+
+                <button
+                    class="admin-menu-item"
+                    data-pagina="servicos"
+                    type="button"
+                >
+                    <span class="admin-menu-icone">
+                        ✂
+                    </span>
+
+                    <span>
+                        Serviços
+                    </span>
+                </button>
+
+
+                <button
+                    class="admin-menu-item"
+                    data-pagina="expediente"
+                    type="button"
+                >
+                    <span class="admin-menu-icone">
+                        ◴
+                    </span>
+
+                    <span>
+                        Expediente
+                    </span>
+                </button>
+
+
+                <button
+                    class="admin-menu-item"
+                    data-pagina="financeiro"
+                    type="button"
+                >
+                    <span class="admin-menu-icone">
+                        $
+                    </span>
+
+                    <span>
+                        Financeiro
+                    </span>
+                </button>
+
+            </nav>
+
+
+            <div class="sidebar-rodape">
+
+                <button
+                    class="botao-tema"
+                    type="button"
+                    aria-label="Alternar tema"
+                    title="Alternar tema"
+                >
+                    🌙
+                </button>
+
+
+                <button
+                    id="botao-sair-admin"
+                    class="botao-sair-admin"
+                    type="button"
+                >
+                    Sair
+                </button>
+
+            </div>
+
+        </aside>
+
+
+
+        <!-- =================================================
+             CONTEÚDO
+        ================================================== -->
+
+        <div class="admin-main">
+
+
+            <!-- =================================================
+                 VISÃO GERAL
+            ================================================== -->
+
+            <section
+                id="pagina-visao-geral"
+                class="pagina-admin ativa"
+            >
+
+                <header class="admin-topo">
+
+                    <div>
+
+                        <span class="admin-etiqueta">
+                            PAINEL ADMINISTRATIVO
+                        </span>
+
+                        <h1>
+                            Visão geral
+                        </h1>
+
+                        <p>
+                            Acompanhe os principais números
+                            da barbearia em um só lugar.
+                        </p>
+
+                    </div>
+
+                </header>
+
+
+                <section class="resumo-dashboard">
+
+                    <article class="card-resumo-dashboard">
+
+                        <span>
+                            Agendamentos hoje
+                        </span>
+
+                        <strong id="dashboard-agendamentos-hoje">
+                            0
+                        </strong>
+
+                        <small>
+                            Atendimentos programados
+                        </small>
+
+                    </article>
+
+
+                    <article class="card-resumo-dashboard">
+
+                        <span>
+                            Faturamento previsto
+                        </span>
+
+                        <strong id="dashboard-faturamento-hoje">
+                            R$ 0,00
+                        </strong>
+
+                        <small>
+                            Para o dia de hoje
+                        </small>
+
+                    </article>
+
+
+                    <article class="card-resumo-dashboard">
+
+                        <span>
+                            Clientes
+                        </span>
+
+                        <strong id="dashboard-total-clientes">
+                            0
+                        </strong>
+
+                        <small>
+                            Cadastrados na barbearia
+                        </small>
+
+                    </article>
+
+
+                    <article class="card-resumo-dashboard">
+
+                        <span>
+                            Serviços ativos
+                        </span>
+
+                        <strong id="dashboard-servicos-ativos">
+                            0
+                        </strong>
+
+                        <small>
+                            Disponíveis atualmente
+                        </small>
+
+                    </article>
+
+                </section>
+
+
+                <section class="dashboard-grid">
+
+                    <article class="card-admin">
+
+                        <div class="card-admin-cabecalho">
+
+                            <div>
+
+                                <span class="card-admin-etiqueta">
+                                    HOJE
+                                </span>
+
+                                <h2>
+                                    Próximos atendimentos
+                                </h2>
+
+                            </div>
+
+                            <button
+                                class="botao-link-admin"
+                                type="button"
+                                data-atalho-pagina="agenda"
+                            >
+                                Ver agenda →
+                            </button>
+
+                        </div>
+
+
+                        <div
+                            id="dashboard-proximos-agendamentos"
+                            class="dashboard-lista"
+                        >
+
+                            <p class="texto-secundario-admin">
+                                Os próximos atendimentos
+                                aparecerão aqui.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="card-admin">
+
+                        <span class="card-admin-etiqueta">
+                            EXPEDIENTE
+                        </span>
+
+                        <h2>
+                            Horário de hoje
+                        </h2>
+
+                        <div
+                            id="dashboard-expediente-hoje"
+                            class="dashboard-expediente"
+                        >
+
+                            <p class="texto-secundario-admin">
+                                Carregando informações...
+                            </p>
+
+                        </div>
+
+                    </article>
+
+                </section>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 AGENDA
+            ================================================== -->
+
+            <section
+                id="pagina-agenda"
+                class="pagina-admin"
+            >
+
+                <header class="admin-topo">
+
+                    <div>
+
+                        <span class="admin-etiqueta">
+                            AGENDA
+                        </span>
+
+                        <h1>
+                            Organize seus horários
+                        </h1>
+
+                        <p>
+                            Visualize atendimentos,
+                            bloqueie períodos e organize
+                            sua rotina.
+                        </p>
+
+                    </div>
+
+
+                    <div class="admin-topo-acoes">
+
+                        <button
+                            id="botao-hoje"
+                            class="botao-secundario-admin"
+                            type="button"
+                        >
+                            Hoje
+                        </button>
+
+
+                        <button
+                            id="botao-novo-bloqueio"
+                            class="botao-principal-admin"
+                            type="button"
+                        >
+                            + Bloquear horário
+                        </button>
+
+                    </div>
+
+                </header>
+
+
+
+                <!-- CONTROLES DA DATA -->
+
+                <section class="agenda-controles">
+
+                    <div class="controle-data">
+
+                        <button
+                            id="data-anterior"
+                            type="button"
+                            aria-label="Dia anterior"
+                        >
+                            ←
+                        </button>
+
+
+                        <div>
+
+                            <span>
+                                Data selecionada
+                            </span>
+
+                            <strong id="data-selecionada-texto">
+                                Carregando...
+                            </strong>
+
+                        </div>
+
+
+                        <button
+                            id="data-proxima"
+                            type="button"
+                            aria-label="Próximo dia"
+                        >
+                            →
+                        </button>
+
+                    </div>
+
+
+                    <input
+                        id="data-agenda-admin"
+                        type="date"
+                    >
+
+                </section>
+
+
+
+                <!-- GRID AGENDA -->
+
+                <section class="agenda-layout">
+
+
+                    <div class="agenda-principal">
+
+                        <div class="agenda-cabecalho">
+
+                            <div>
+
+                                <h2>
+                                    Agenda do dia
+                                </h2>
+
+                                <p id="resumo-agenda-dia">
+                                    Carregando...
+                                </p>
+
+                            </div>
+
+
+                            <div class="agenda-legenda">
+
+                                <span>
+                                    <i class="legenda-agendamento"></i>
+                                    Agendamento
+                                </span>
+
+                                <span>
+                                    <i class="legenda-bloqueio"></i>
+                                    Bloqueio
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <div
+                            id="timeline-agenda"
+                            class="timeline-agenda"
+                        >
+
+                            <div class="estado-carregando-admin">
+                                Carregando agenda...
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <aside class="agenda-lateral">
+
+
+                        <section class="card-admin">
+
+                            <span class="card-admin-etiqueta">
+                                RESUMO
+                            </span>
+
+                            <h3>
+                                Dia selecionado
+                            </h3>
+
+
+                            <div class="metricas-agenda">
+
+                                <div>
+
+                                    <span>
+                                        Agendamentos
+                                    </span>
+
+                                    <strong id="total-agendamentos-dia">
+                                        0
+                                    </strong>
+
+                                </div>
+
+
+                                <div>
+
+                                    <span>
+                                        Horas bloqueadas
+                                    </span>
+
+                                    <strong id="total-horas-bloqueadas">
+                                        0h
+                                    </strong>
+
+                                </div>
+
+
+                                <div>
+
+                                    <span>
+                                        Faturamento previsto
+                                    </span>
+
+                                    <strong id="faturamento-previsto-dia">
+                                        R$ 0,00
+                                    </strong>
+
+                                </div>
+
+                            </div>
+
+                        </section>
+
+
+
+                        <section class="card-admin">
+
+                            <span class="card-admin-etiqueta">
+                                EXPEDIENTE
+                            </span>
+
+                            <h3>
+                                Horário do dia
+                            </h3>
+
+                            <div id="expediente-dia">
+
+                                <p>
+                                    Carregando...
+                                </p>
+
+                            </div>
+
+                        </section>
+
+                    </aside>
+
+                </section>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 CLIENTES
+            ================================================== -->
+
+            <section
+                id="pagina-clientes"
+                class="pagina-admin"
+            >
+
+                <header class="admin-topo clientes-header">
+
+                    <div>
+
+                        <span class="admin-etiqueta">
+                            CLIENTES
+                        </span>
+
+                        <h1>
+                            Seus clientes
+                        </h1>
+
+                        <p>
+                            Consulte histórico,
+                            visitas e informações
+                            dos seus clientes.
+                        </p>
+
+                    </div>
+
+                </header>
+
+
+
+                <section class="clientes-resumo">
+
+                    <article class="card-resumo-clientes">
+
+                        <span>
+                            Total de clientes
+                        </span>
+
+                        <strong id="total-clientes">
+                            0
+                        </strong>
+
+                    </article>
+
+
+                    <article class="card-resumo-clientes">
+
+                        <span>
+                            Atendidos no mês
+                        </span>
+
+                        <strong id="clientes-mes">
+                            0
+                        </strong>
+
+                    </article>
+
+
+                    <article class="card-resumo-clientes">
+
+                        <span>
+                            Novos no mês
+                        </span>
+
+                        <strong id="clientes-novos">
+                            0
+                        </strong>
+
+                    </article>
+
+                </section>
+
+
+
+                <section class="clientes-painel card-admin">
+
+                    <div class="clientes-painel-topo">
+
+                        <div>
+
+                            <span class="card-admin-etiqueta">
+                                CADASTRO
+                            </span>
+
+                            <h2>
+                                Lista de clientes
+                            </h2>
+
+                        </div>
+
+
+                        <div class="busca-admin">
+
+                            <input
+                                id="busca-cliente"
+                                type="search"
+                                placeholder="Buscar cliente..."
+                            >
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="tabela-admin-container">
+
+                        <table class="tabela-admin tabela-clientes">
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>
+                                        Cliente
+                                    </th>
+
+                                    <th>
+                                        WhatsApp
+                                    </th>
+
+                                    <th>
+                                        Visitas
+                                    </th>
+
+                                    <th>
+                                        Último atendimento
+                                    </th>
+
+                                    <th>
+                                        Total gasto
+                                    </th>
+
+                                    <th>
+                                    </th>
+
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody id="lista-clientes">
+
+                                <tr>
+
+                                    <td colspan="6">
+                                        Carregando clientes...
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </section>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 SERVIÇOS
+            ================================================== -->
+
+            <section
+                id="pagina-servicos"
+                class="pagina-admin"
+            >
+
+                <header class="admin-topo servicos-cabecalho">
+
+                    <div>
+
+                        <span class="admin-etiqueta">
+                            SERVIÇOS
+                        </span>
+
+                        <h1>
+                            Seus serviços
+                        </h1>
+
+                        <p>
+                            Cadastre preços,
+                            duração e disponibilidade
+                            para agendamento online.
+                        </p>
+
+                    </div>
+
+
+                    <div class="admin-topo-acoes">
+
+                        <button
+                            id="botao-novo-servico"
+                            class="botao-principal-admin"
+                            type="button"
+                        >
+                            + Novo serviço
+                        </button>
+
+                    </div>
+
+                </header>
+
+
+
+                <section class="servicos-resumo">
+
+                    <article class="card-resumo-servico">
+
+                        <span>
+                            Total de serviços
+                        </span>
+
+                        <strong id="total-servicos">
+                            0
+                        </strong>
+
+                    </article>
+
+
+                    <article class="card-resumo-servico">
+
+                        <span>
+                            Ativos
+                        </span>
+
+                        <strong id="total-servicos-ativos">
+                            0
+                        </strong>
+
+                    </article>
+
+
+                    <article class="card-resumo-servico">
+
+                        <span>
+                            Agendamento online
+                        </span>
+
+                        <strong id="total-servicos-online">
+                            0
+                        </strong>
+
+                    </article>
+
+                </section>
+
+
+
+                <section class="servicos-painel card-admin">
+
+                    <div class="servicos-painel-topo">
+
+                        <div>
+
+                            <span class="card-admin-etiqueta">
+                                CATÁLOGO
+                            </span>
+
+                            <h2>
+                                Serviços cadastrados
+                            </h2>
+
+                        </div>
+
+
+                        <div class="busca-admin">
+
+                            <input
+                                id="busca-servico"
+                                type="search"
+                                placeholder="Buscar serviço..."
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        id="lista-servicos-admin"
+                        class="lista-servicos-admin"
+                    >
+
+                        <div class="estado-carregando-admin">
+                            Carregando serviços...
+                        </div>
+
+                    </div>
+
+                </section>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 EXPEDIENTE
+            ================================================== -->
+
+            <section
+                id="pagina-expediente"
+                class="pagina-admin"
+            >
+
+                <header class="admin-topo">
+
+                    <div>
+
+                        <span class="admin-etiqueta">
+                            EXPEDIENTE
+                        </span>
+
+                        <h1>
+                            Horários de trabalho
+                        </h1>
+
+                        <p>
+                            Configure os dias e horários
+                            em que a barbearia recebe
+                            agendamentos.
+                        </p>
+
+                    </div>
+
+                </header>
+
+
+
+                <section class="card-admin card-expediente-config">
+
+                    <div class="expediente-cabecalho">
+
+                        <div>
+
+                            <span class="card-admin-etiqueta">
+                                SEMANA
+                            </span>
+
+                            <h2>
+                                Expediente semanal
+                            </h2>
+
+                            <p>
+                                Ative os dias trabalhados
+                                e defina os horários de
+                                início e fim.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <form id="form-expediente">
+
+                        <div
+                            id="lista-dias-expediente"
+                            class="lista-dias-expediente"
+                        ></div>
+
+
+                        <div class="expediente-rodape">
+
+                            <p
+                                id="status-expediente"
+                                class="status-expediente"
+                            ></p>
+
+
+                            <button
+                                class="botao-principal-admin"
+                                type="submit"
+                            >
+                                Salvar alterações
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </section>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 FINANCEIRO
+            ================================================== -->
+
+    <!-- =========================================================
+     FINANCEIRO
+========================================================= -->
+
+<section
+    id="pagina-financeiro"
+    class="pagina-admin"
+>
+
+    <header class="admin-topo">
+
+        <div>
+
+            <span class="admin-etiqueta">
+                FINANCEIRO
+            </span>
+
+            <h1>
+                Financeiro
+            </h1>
+
+            <p>
+                Acompanhe o faturamento e os atendimentos
+                realizados pela barbearia.
+            </p>
+
+        </div>
+
+    </header>
+
+
+    <section class="financeiro-resumo">
+
+        <article class="card-admin">
+
+            <span class="card-admin-etiqueta">
+                REALIZADO
+            </span>
+
+            <h3>
+                Faturamento no mês
+            </h3>
+
+            <strong id="financeiro-realizado">
+                R$ 0,00
+            </strong>
+
+            <p>
+                Atendimentos concluídos
+            </p>
+
+        </article>
+
+
+        <article class="card-admin">
+
+            <span class="card-admin-etiqueta">
+                PREVISTO
+            </span>
+
+            <h3>
+                A receber
+            </h3>
+
+            <strong id="financeiro-previsto">
+                R$ 0,00
+            </strong>
+
+            <p>
+                Agendamentos ainda não concluídos
+            </p>
+
+        </article>
+
+
+        <article class="card-admin">
+
+            <span class="card-admin-etiqueta">
+                ATENDIMENTOS
+            </span>
+
+            <h3>
+                Concluídos no mês
+            </h3>
+
+            <strong id="financeiro-concluidos">
+                0
+            </strong>
+
+            <p>
+                Serviços finalizados
+            </p>
+
+        </article>
+
+
+        <article class="card-admin">
+
+            <span class="card-admin-etiqueta">
+                MÉDIA
+            </span>
+
+            <h3>
+                Ticket médio
+            </h3>
+
+            <strong id="financeiro-ticket-medio">
+                R$ 0,00
+            </strong>
+
+            <p>
+                Valor médio por atendimento concluído
+            </p>
+
+        </article>
+
+    </section>
+
+
+    <section class="card-admin financeiro-historico">
+
+        <header class="financeiro-historico-topo">
+
+            <div>
+
+                <span class="card-admin-etiqueta">
+                    MOVIMENTAÇÕES
+                </span>
+
+                <h2>
+                    Resumo do mês
+                </h2>
+
+                <p>
+                    Acompanhe os atendimentos e valores
+                    registrados neste mês.
+                </p>
+
+            </div>
+
+        </header>
+
+
+        <div id="financeiro-movimentacoes">
+
+            <div class="financeiro-vazio">
+                Carregando movimentações...
+            </div>
+
+        </div>
+
+    </section>
+
+</section>
+
+
+        </div>
+
+    </main>
+
+
+
+    <!-- =====================================================
+         MODAL - BLOQUEAR HORÁRIO
+    ====================================================== -->
+
+    <div
+        id="modal-bloqueio"
+        class="modal-overlay"
+        aria-hidden="true"
+    >
+
+        <div
+            class="modal-card"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="titulo-modal-bloqueio"
+        >
+
+            <div class="modal-topo">
+
+                <div>
+
+                    <span class="admin-etiqueta">
+                        NOVO BLOQUEIO
+                    </span>
+
+                    <h2 id="titulo-modal-bloqueio">
+                        Bloquear período
+                    </h2>
+
+                </div>
+
+
+                <button
+                    id="fechar-modal-bloqueio"
+                    class="modal-fechar"
+                    type="button"
+                    aria-label="Fechar"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+
+            <form id="form-bloqueio">
+
+                <div class="campo-admin">
+
+                    <label for="bloqueio-data">
+                        Data
+                    </label>
+
+                    <input
+                        id="bloqueio-data"
+                        type="date"
+                        required
+                    >
+
+                </div>
+
+
+
+                <div class="campos-duplos">
+
+                    <div class="campo-admin">
+
+                        <label for="bloqueio-inicio">
+                            Início
+                        </label>
+
+                        <input
+                            id="bloqueio-inicio"
+                            type="time"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="campo-admin">
+
+                        <label for="bloqueio-fim">
+                            Fim
+                        </label>
+
+                        <input
+                            id="bloqueio-fim"
+                            type="time"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="campo-admin">
+
+                    <label for="bloqueio-motivo">
+                        Motivo
+                    </label>
+
+                    <input
+                        id="bloqueio-motivo"
+                        type="text"
+                        placeholder="Ex.: Almoço, compromisso, folga..."
+                    >
+
+                </div>
+
+
+                <button
+                    class="botao-principal-admin botao-modal"
+                    type="submit"
+                >
+                    Salvar bloqueio
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         MODAL - SERVIÇO
+    ====================================================== -->
+
+    <div
+        id="modal-servico"
+        class="modal-overlay"
+        aria-hidden="true"
+    >
+
+        <div
+            class="modal-card modal-servico-card"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="titulo-modal-servico"
+        >
+
+            <div class="modal-topo">
+
+                <div>
+
+                    <span class="admin-etiqueta">
+                        SERVIÇO
+                    </span>
+
+                    <h2 id="titulo-modal-servico">
+                        Novo serviço
+                    </h2>
+
+                </div>
+
+
+                <button
+                    id="fechar-modal-servico"
+                    class="modal-fechar"
+                    type="button"
+                    aria-label="Fechar"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+
+            <form id="form-servico">
+
+                <input
+                    id="servico-id"
+                    type="hidden"
+                >
+
+
+                <div class="campo-admin">
+
+                    <label for="servico-nome">
+                        Nome
+                    </label>
+
+                    <input
+                        id="servico-nome"
+                        type="text"
+                        placeholder="Ex.: Corte"
+                        required
+                    >
+
+                </div>
+
+
+
+                <div class="campo-admin">
+
+                    <label for="servico-descricao">
+                        Descrição
+                    </label>
+
+                    <textarea
+                        id="servico-descricao"
+                        rows="3"
+                        placeholder="Descreva o serviço..."
+                    ></textarea>
+
+                </div>
+
+
+
+                <div class="campos-duplos">
+
+                    <div class="campo-admin">
+
+                        <label for="servico-preco">
+                            Preço
+                        </label>
+
+                        <input
+                            id="servico-preco"
+                            type="number"
+                            min="0"
+                            step="0.01"
+                            placeholder="0,00"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="campo-admin">
+
+                        <label for="servico-duracao">
+                            Duração
+                        </label>
+
+                        <input
+                            id="servico-duracao"
+                            type="number"
+                            min="5"
+                            step="5"
+                            placeholder="30"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="campo-admin">
+
+                    <label for="servico-categoria">
+                        Categoria
+                    </label>
+
+                    <input
+                        id="servico-categoria"
+                        type="text"
+                        placeholder="Ex.: Cabelo"
+                    >
+
+                </div>
+
+
+
+                <div class="servico-opcoes">
+
+                    <label class="opcao-checkbox">
+
+                        <input
+                            id="servico-ativo"
+                            type="checkbox"
+                            checked
+                        >
+
+                        <span>
+                            Serviço ativo
+                        </span>
+
+                    </label>
+
+
+                    <label class="opcao-checkbox">
+
+                        <input
+                            id="servico-online"
+                            type="checkbox"
+                            checked
+                        >
+
+                        <span>
+                            Permitir agendamento online
+                        </span>
+
+                    </label>
+
+                </div>
+
+
+
+                <div class="modal-acoes">
+
+                    <button
+                        id="cancelar-servico"
+                        class="botao-secundario-admin"
+                        type="button"
+                    >
+                        Cancelar
+                    </button>
+
+
+                    <button
+                        id="salvar-servico"
+                        class="botao-principal-admin"
+                        type="submit"
+                    >
+                        Salvar serviço
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+
+         IMPORTANTE:
+         Neste primeiro passo carregamos apenas a infraestrutura
+         comum. O novo admin.js será colocado no próximo passo.
+    ====================================================== -->
+
+    <script
+    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"
+></script>
+
+<script src="../js/supabase.js"></script>
+
+<script src="./admin.js"></script>
+<script src="./visao-geral.js"></script>
+<script src="./agenda.js"></script>
+<script src="./clientes.js"></script>
+<script src="./servicos.js"></script>
+<script src="./expediente.js"></script>
+<script src="./financeiro.js"></script>
+
+<script src="../js/tema.js"></script>
+
+</body>
+</html>

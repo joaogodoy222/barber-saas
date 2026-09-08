@@ -1,0 +1,2561 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title id="titulo-admin">
+        Painel Administrativo | Barber SaaS
+    </title>
+
+    <!-- CSS ADMINISTRATIVO -->
+    <link
+        rel="stylesheet"
+        href="../css/admin.css"
+    >
+
+    <!-- TEMA GLOBAL -->
+    <link
+        rel="stylesheet"
+        href="../css/tema.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         LOGIN
+    ====================================================== -->
+
+    <section
+        id="login-admin"
+        class="login-admin"
+    >
+
+        <div class="login-admin-card">
+
+            <div class="login-admin-marca">
+
+                <div
+                    id="login-admin-logo"
+                    class="login-admin-logo"
+                >
+                    BS
+                </div>
+
+                <div>
+                    <strong id="login-admin-marca-nome">
+                        Barber SaaS
+                    </strong>
+
+                    <span>
+                        Gestão para barbearias
+                    </span>
+                </div>
+
+            </div>
+
+
+            <div
+                id="bloco-login-admin"
+            >
+
+                <div class="login-admin-texto">
+
+                    <span class="admin-etiqueta">
+                        ÁREA ADMINISTRATIVA
+                    </span>
+
+                    <h1>
+                        Bem-vindo de volta.
+                    </h1>
+
+                    <p>
+                        Entre com seus dados para acessar
+                        o painel da sua barbearia.
+                    </p>
+
+                </div>
+
+
+                <form
+                    id="form-login-admin"
+                    class="login-admin-form"
+                >
+
+                    <div class="campo-admin">
+
+                        <label for="email-admin">
+                            E-mail
+                        </label>
+
+                        <input
+                            id="email-admin"
+                            type="email"
+                            autocomplete="email"
+                            placeholder="seu@email.com"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="campo-admin">
+
+                        <label for="senha-admin">
+                            Senha
+                        </label>
+
+                        <input
+                            id="senha-admin"
+                            type="password"
+                            autocomplete="current-password"
+                            placeholder="Digite sua senha"
+                            required
+                        >
+
+                    </div>
+
+
+                    <p
+                        id="mensagem-login"
+                        class="mensagem-login"
+                    ></p>
+
+
+                    <button
+                        id="botao-login"
+                        class="botao-principal-admin login-admin-botao"
+                        type="submit"
+                    >
+                        Entrar
+                    </button>
+
+
+                    <button
+                        id="botao-abrir-cadastro"
+                        class="botao-secundario-admin login-admin-botao"
+                        type="button"
+                        style="margin-top: 10px; width: 100%;"
+                    >
+                        Criar minha barbearia
+                    </button>
+
+                </form>
+
+            </div>
+
+
+            <div
+                id="bloco-cadastro-admin"
+                style="display: none;"
+            >
+
+                <div class="login-admin-texto">
+
+                    <span class="admin-etiqueta">
+                        NOVA CONTA
+                    </span>
+
+                    <h1>
+                        Crie sua barbearia.
+                    </h1>
+
+                    <p>
+                        Primeiro crie seu acesso.
+                        Depois configuraremos sua barbearia.
+                    </p>
+
+                </div>
+
+
+                <form
+                    id="form-cadastro-admin"
+                    class="login-admin-form"
+                >
+
+                    <div class="campo-admin">
+
+                        <label for="cadastro-email">
+                            E-mail
+                        </label>
+
+                        <input
+                            id="cadastro-email"
+                            type="email"
+                            autocomplete="email"
+                            placeholder="seu@email.com"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="campo-admin">
+
+                        <label for="cadastro-senha">
+                            Senha
+                        </label>
+
+                        <input
+                            id="cadastro-senha"
+                            type="password"
+                            autocomplete="new-password"
+                            placeholder="Mínimo de 6 caracteres"
+                            minlength="6"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="campo-admin">
+
+                        <label for="cadastro-confirmar-senha">
+                            Confirmar senha
+                        </label>
+
+                        <input
+                            id="cadastro-confirmar-senha"
+                            type="password"
+                            autocomplete="new-password"
+                            placeholder="Digite a senha novamente"
+                            minlength="6"
+                            required
+                        >
+
+                    </div>
+
+
+                    <p
+                        id="mensagem-cadastro"
+                        class="mensagem-login"
+                    ></p>
+
+
+                    <button
+                        id="botao-cadastrar"
+                        class="botao-principal-admin login-admin-botao"
+                        type="submit"
+                    >
+                        Criar conta
+                    </button>
+
+
+                    <button
+                        id="botao-voltar-login"
+                        class="botao-secundario-admin login-admin-botao"
+                        type="button"
+                        style="margin-top: 10px; width: 100%;"
+                    >
+                        Já tenho conta
+                    </button>
+
+                </form>
+
+            </div>
+
+
+            <div
+                id="bloco-onboarding-admin"
+                style="display: none;"
+            >
+
+                <div class="login-admin-texto">
+
+                    <span class="admin-etiqueta">
+                        CONFIGURAÇÃO INICIAL
+                    </span>
+
+                    <h1>
+                        Vamos preparar seu espaço.
+                    </h1>
+
+                    <p>
+                        Essas informações criam sua barbearia
+                        e seu primeiro profissional.
+                    </p>
+
+                </div>
+
+
+                <form
+                    id="form-onboarding-admin"
+                    class="login-admin-form"
+                >
+
+                    <div class="campo-admin">
+
+                        <label for="onboarding-barbearia">
+                            Nome da barbearia
+                        </label>
+
+                        <input
+                            id="onboarding-barbearia"
+                            type="text"
+                            placeholder="Ex.: Barbearia Central"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="campo-admin">
+
+                        <label for="onboarding-profissional">
+                            Seu nome
+                        </label>
+
+                        <input
+                            id="onboarding-profissional"
+                            type="text"
+                            autocomplete="name"
+                            placeholder="Ex.: João Silva"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="campo-admin">
+
+                        <label for="onboarding-telefone">
+                            WhatsApp
+                        </label>
+
+                        <input
+                            id="onboarding-telefone"
+                            type="tel"
+                            inputmode="numeric"
+                            autocomplete="tel"
+                            placeholder="(11) 99999-9999"
+                        >
+
+                    </div>
+
+
+                    <div class="campo-admin">
+
+                        <label for="onboarding-slug">
+                            Link de agendamento
+                        </label>
+
+                        <input
+                            id="onboarding-slug"
+                            type="text"
+                            autocomplete="off"
+                            placeholder="barbearia-central"
+                            required
+                        >
+
+                        <small
+                            id="preview-link-onboarding"
+                            class="texto-secundario-admin"
+                        >
+                            ?barbearia=barbearia-central
+                        </small>
+
+                    </div>
+
+
+                    <p
+                        id="mensagem-onboarding"
+                        class="mensagem-login"
+                    ></p>
+
+
+                    <button
+                        id="botao-finalizar-onboarding"
+                        class="botao-principal-admin login-admin-botao"
+                        type="submit"
+                    >
+                        Criar minha barbearia
+                    </button>
+
+
+                    <button
+                        id="botao-sair-onboarding"
+                        class="botao-secundario-admin login-admin-botao"
+                        type="button"
+                        style="margin-top: 10px; width: 100%;"
+                    >
+                        Sair
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         PAINEL ADMINISTRATIVO
+    ====================================================== -->
+
+    <main
+        id="painel-admin"
+        style="display: none;"
+    >
+
+
+        <!-- =================================================
+             SIDEBAR
+        ================================================== -->
+
+        <aside class="sidebar">
+
+            <div class="sidebar-logo">
+
+                <div
+                    id="sidebar-logo-simbolo"
+                    class="sidebar-logo-simbolo"
+                >
+                    B
+                </div>
+
+                <div class="sidebar-logo-texto">
+
+                    <strong id="sidebar-barbearia-nome">
+                        Barbearia
+                    </strong>
+
+                    <span>
+                        Painel administrativo
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <nav class="sidebar-menu">
+
+                <button
+                    class="admin-menu-item ativo"
+                    data-pagina="visao-geral"
+                    type="button"
+                >
+                    <span class="admin-menu-icone">
+                        ◫
+                    </span>
+
+                    <span>
+                        Visão geral
+                    </span>
+                </button>
+
+
+                <button
+                    class="admin-menu-item"
+                    data-pagina="agenda"
+                    type="button"
+                >
+                    <span class="admin-menu-icone">
+                        ◷
+                    </span>
+
+                    <span>
+                        Agenda
+                    </span>
+                </button>
+
+
+                <button
+                    class="admin-menu-item"
+                    data-pagina="clientes"
+                    type="button"
+                >
+                    <span class="admin-menu-icone">
+                        ♙
+                    </span>
+
+                    <span>
+                        Clientes
+                    </span>
+                </button>
+
+
+                <button
+                    class="admin-menu-item"
+                    data-pagina="servicos"
+                    type="button"
+                >
+                    <span class="admin-menu-icone">
+                        ✂
+                    </span>
+
+                    <span>
+                        Serviços
+                    </span>
+                </button>
+
+
+                <button
+                    class="admin-menu-item"
+                    data-pagina="profissionais"
+                    type="button"
+                >
+                    <span class="admin-menu-icone">
+                        ♟
+                    </span>
+
+                    <span>
+                        Profissionais
+                    </span>
+                </button>
+
+
+                <button
+                    class="admin-menu-item"
+                    data-pagina="expediente"
+                    type="button"
+                >
+                    <span class="admin-menu-icone">
+                        ◴
+                    </span>
+
+                    <span>
+                        Expediente
+                    </span>
+                </button>
+
+
+                <button
+                    class="admin-menu-item"
+                    data-pagina="planos"
+                    type="button"
+                >
+                    <span class="admin-menu-icone">
+                        ◈
+                    </span>
+
+                    <span>
+                        Planos
+                    </span>
+                </button>
+
+
+                <button
+                    class="admin-menu-item"
+                    data-pagina="financeiro"
+                    type="button"
+                >
+                    <span class="admin-menu-icone">
+                        $
+                    </span>
+
+                    <span>
+                        Financeiro
+                    </span>
+                </button>
+
+            </nav>
+
+
+            <div class="sidebar-rodape">
+
+                <button
+                    class="botao-tema"
+                    type="button"
+                    aria-label="Alternar tema"
+                    title="Alternar tema"
+                >
+                    🌙
+                </button>
+
+
+                <button
+                    id="botao-sair-admin"
+                    class="botao-sair-admin"
+                    type="button"
+                >
+                    Sair
+                </button>
+
+            </div>
+
+        </aside>
+
+
+
+        <!-- =================================================
+             CONTEÚDO
+        ================================================== -->
+
+        <div class="admin-main">
+
+
+            <!-- =================================================
+                 VISÃO GERAL
+            ================================================== -->
+
+            <section
+                id="pagina-visao-geral"
+                class="pagina-admin ativa"
+            >
+
+                <header class="admin-topo">
+
+                    <div>
+
+                        <span class="admin-etiqueta">
+                            PAINEL ADMINISTRATIVO
+                        </span>
+
+                        <h1>
+                            Visão geral
+                        </h1>
+
+                        <p>
+                            Acompanhe os principais números
+                            da barbearia em um só lugar.
+                        </p>
+
+                    </div>
+
+                </header>
+
+
+                <section class="resumo-dashboard">
+
+                    <article class="card-resumo-dashboard">
+
+                        <span>
+                            Agendamentos hoje
+                        </span>
+
+                        <strong id="dashboard-agendamentos-hoje">
+                            0
+                        </strong>
+
+                        <small>
+                            Atendimentos programados
+                        </small>
+
+                    </article>
+
+
+                    <article class="card-resumo-dashboard">
+
+                        <span>
+                            Faturamento previsto
+                        </span>
+
+                        <strong id="dashboard-faturamento-hoje">
+                            R$ 0,00
+                        </strong>
+
+                        <small>
+                            Para o dia de hoje
+                        </small>
+
+                    </article>
+
+
+                    <article class="card-resumo-dashboard">
+
+                        <span>
+                            Clientes
+                        </span>
+
+                        <strong id="dashboard-total-clientes">
+                            0
+                        </strong>
+
+                        <small>
+                            Cadastrados na barbearia
+                        </small>
+
+                    </article>
+
+
+                    <article class="card-resumo-dashboard">
+
+                        <span>
+                            Serviços ativos
+                        </span>
+
+                        <strong id="dashboard-servicos-ativos">
+                            0
+                        </strong>
+
+                        <small>
+                            Disponíveis atualmente
+                        </small>
+
+                    </article>
+
+                </section>
+
+
+                <section class="dashboard-grid">
+
+                    <article class="card-admin">
+
+                        <div class="card-admin-cabecalho">
+
+                            <div>
+
+                                <span class="card-admin-etiqueta">
+                                    HOJE
+                                </span>
+
+                                <h2>
+                                    Próximos atendimentos
+                                </h2>
+
+                            </div>
+
+                            <button
+                                class="botao-link-admin"
+                                type="button"
+                                data-atalho-pagina="agenda"
+                            >
+                                Ver agenda →
+                            </button>
+
+                        </div>
+
+
+                        <div
+                            id="dashboard-proximos-agendamentos"
+                            class="dashboard-lista"
+                        >
+
+                            <p class="texto-secundario-admin">
+                                Os próximos atendimentos
+                                aparecerão aqui.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="card-admin">
+
+                        <span class="card-admin-etiqueta">
+                            EXPEDIENTE
+                        </span>
+
+                        <h2>
+                            Horário de hoje
+                        </h2>
+
+                        <div
+                            id="dashboard-expediente-hoje"
+                            class="dashboard-expediente"
+                        >
+
+                            <p class="texto-secundario-admin">
+                                Carregando informações...
+                            </p>
+
+                        </div>
+
+                    </article>
+
+                </section>
+
+
+                <section
+                    class="card-admin"
+                    style="margin-top: 24px;"
+                >
+
+                    <div class="card-admin-cabecalho">
+
+                        <div>
+
+                            <span class="card-admin-etiqueta">
+                                AGENDAMENTO ONLINE
+                            </span>
+
+                            <h2>
+                                Link público da barbearia
+                            </h2>
+
+                            <p class="texto-secundario-admin">
+                                Envie este link aos seus clientes para eles
+                                agendarem diretamente pela página da sua barbearia.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        style="
+                            display: grid;
+                            grid-template-columns: minmax(0, 1fr) auto;
+                            gap: 12px;
+                            align-items: end;
+                            margin-top: 18px;
+                        "
+                    >
+
+                        <div class="campo-admin">
+
+                            <label for="link-publico-barbearia">
+                                Seu link
+                            </label>
+
+                            <input
+                                id="link-publico-barbearia"
+                                type="text"
+                                readonly
+                                value="Carregando..."
+                            >
+
+                        </div>
+
+
+                        <button
+                            id="botao-copiar-link-publico"
+                            class="botao-principal-admin"
+                            type="button"
+                        >
+                            Copiar link
+                        </button>
+
+                    </div>
+
+
+                    <p
+                        id="mensagem-link-publico"
+                        class="texto-secundario-admin"
+                        style="margin-top: 10px;"
+                    ></p>
+
+                </section>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 AGENDA
+            ================================================== -->
+
+            <section
+                id="pagina-agenda"
+                class="pagina-admin"
+            >
+
+                <header class="admin-topo">
+
+                    <div>
+
+                        <span class="admin-etiqueta">
+                            AGENDA
+                        </span>
+
+                        <h1>
+                            Organize seus horários
+                        </h1>
+
+                        <p>
+                            Visualize atendimentos,
+                            bloqueie períodos e organize
+                            sua rotina.
+                        </p>
+
+                    </div>
+
+
+                    <div class="admin-topo-acoes">
+
+                        <button
+                            id="botao-hoje"
+                            class="botao-secundario-admin"
+                            type="button"
+                        >
+                            Hoje
+                        </button>
+
+
+                        <button
+                            id="botao-novo-agendamento"
+                            class="botao-principal-admin"
+                            type="button"
+                        >
+                            + Novo agendamento
+                        </button>
+
+                        <button
+                            id="botao-novo-bloqueio"
+                            class="botao-secundario-admin"
+                            type="button"
+                        >
+                            + Bloquear horário
+                        </button>
+
+                    </div>
+
+                </header>
+
+
+
+                <!-- CONTROLES DA DATA -->
+
+                <section class="agenda-controles">
+
+                    <div class="controle-data">
+
+                        <button
+                            id="data-anterior"
+                            type="button"
+                            aria-label="Dia anterior"
+                        >
+                            ←
+                        </button>
+
+
+                        <div>
+
+                            <span>
+                                Data selecionada
+                            </span>
+
+                            <strong id="data-selecionada-texto">
+                                Carregando...
+                            </strong>
+
+                        </div>
+
+
+                        <button
+                            id="data-proxima"
+                            type="button"
+                            aria-label="Próximo dia"
+                        >
+                            →
+                        </button>
+
+                    </div>
+
+
+                    <input
+                        id="data-agenda-admin"
+                        type="date"
+                    >
+
+                </section>
+
+
+
+                <!-- GRID AGENDA -->
+
+                <section class="agenda-layout">
+
+
+                    <div class="agenda-principal">
+
+                        <div class="agenda-cabecalho">
+
+                            <div>
+
+                                <h2>
+                                    Agenda do dia
+                                </h2>
+
+                                <p id="resumo-agenda-dia">
+                                    Carregando...
+                                </p>
+
+                            </div>
+
+
+                            <div class="agenda-legenda">
+
+                                <span>
+                                    <i class="legenda-agendamento"></i>
+                                    Agendamento
+                                </span>
+
+                                <span>
+                                    <i class="legenda-bloqueio"></i>
+                                    Bloqueio
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <div
+                            id="timeline-agenda"
+                            class="timeline-agenda"
+                        >
+
+                            <div class="estado-carregando-admin">
+                                Carregando agenda...
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <aside class="agenda-lateral">
+
+
+                        <section class="card-admin">
+
+                            <span class="card-admin-etiqueta">
+                                RESUMO
+                            </span>
+
+                            <h3>
+                                Dia selecionado
+                            </h3>
+
+
+                            <div class="metricas-agenda">
+
+                                <div>
+
+                                    <span>
+                                        Agendamentos
+                                    </span>
+
+                                    <strong id="total-agendamentos-dia">
+                                        0
+                                    </strong>
+
+                                </div>
+
+
+                                <div>
+
+                                    <span>
+                                        Horas bloqueadas
+                                    </span>
+
+                                    <strong id="total-horas-bloqueadas">
+                                        0h
+                                    </strong>
+
+                                </div>
+
+
+                                <div>
+
+                                    <span>
+                                        Faturamento previsto
+                                    </span>
+
+                                    <strong id="faturamento-previsto-dia">
+                                        R$ 0,00
+                                    </strong>
+
+                                </div>
+
+                            </div>
+
+                        </section>
+
+
+
+                        <section class="card-admin">
+
+                            <span class="card-admin-etiqueta">
+                                EXPEDIENTE
+                            </span>
+
+                            <h3>
+                                Horário do dia
+                            </h3>
+
+                            <div id="expediente-dia">
+
+                                <p>
+                                    Carregando...
+                                </p>
+
+                            </div>
+
+                        </section>
+
+                    </aside>
+
+                </section>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 CLIENTES
+            ================================================== -->
+
+            <section
+                id="pagina-clientes"
+                class="pagina-admin"
+            >
+
+                <header class="admin-topo clientes-header">
+
+                    <div>
+
+                        <span class="admin-etiqueta">
+                            CLIENTES
+                        </span>
+
+                        <h1>
+                            Seus clientes
+                        </h1>
+
+                        <p>
+                            Consulte histórico,
+                            visitas e informações
+                            dos seus clientes.
+                        </p>
+
+                    </div>
+
+                </header>
+
+
+
+                <section class="clientes-resumo">
+
+                    <article class="card-resumo-clientes">
+
+                        <span>
+                            Total de clientes
+                        </span>
+
+                        <strong id="total-clientes">
+                            0
+                        </strong>
+
+                    </article>
+
+
+                    <article class="card-resumo-clientes">
+
+                        <span>
+                            Atendidos no mês
+                        </span>
+
+                        <strong id="clientes-mes">
+                            0
+                        </strong>
+
+                    </article>
+
+
+                    <article class="card-resumo-clientes">
+
+                        <span>
+                            Novos no mês
+                        </span>
+
+                        <strong id="clientes-novos">
+                            0
+                        </strong>
+
+                    </article>
+
+                </section>
+
+
+
+                <section class="clientes-painel card-admin">
+
+                    <div class="clientes-painel-topo">
+
+                        <div>
+
+                            <span class="card-admin-etiqueta">
+                                CADASTRO
+                            </span>
+
+                            <h2>
+                                Lista de clientes
+                            </h2>
+
+                        </div>
+
+
+                        <div class="busca-admin">
+
+                            <input
+                                id="busca-cliente"
+                                type="search"
+                                placeholder="Buscar cliente..."
+                            >
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="tabela-admin-container">
+
+                        <table class="tabela-admin tabela-clientes">
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>
+                                        Cliente
+                                    </th>
+
+                                    <th>
+                                        WhatsApp
+                                    </th>
+
+                                    <th>
+                                        Visitas
+                                    </th>
+
+                                    <th>
+                                        Último atendimento
+                                    </th>
+
+                                    <th>
+                                        Total gasto
+                                    </th>
+
+                                    <th>
+                                    </th>
+
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody id="lista-clientes">
+
+                                <tr>
+
+                                    <td colspan="6">
+                                        Carregando clientes...
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </section>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 SERVIÇOS
+            ================================================== -->
+
+            <section
+                id="pagina-servicos"
+                class="pagina-admin"
+            >
+
+                <header class="admin-topo servicos-cabecalho">
+
+                    <div>
+
+                        <span class="admin-etiqueta">
+                            SERVIÇOS
+                        </span>
+
+                        <h1>
+                            Seus serviços
+                        </h1>
+
+                        <p>
+                            Cadastre preços,
+                            duração e disponibilidade
+                            para agendamento online.
+                        </p>
+
+                    </div>
+
+
+                    <div class="admin-topo-acoes">
+
+                        <button
+                            id="botao-novo-servico"
+                            class="botao-principal-admin"
+                            type="button"
+                        >
+                            + Novo serviço
+                        </button>
+
+                    </div>
+
+                </header>
+
+
+
+                <section class="servicos-resumo">
+
+                    <article class="card-resumo-servico">
+
+                        <span>
+                            Total de serviços
+                        </span>
+
+                        <strong id="total-servicos">
+                            0
+                        </strong>
+
+                    </article>
+
+
+                    <article class="card-resumo-servico">
+
+                        <span>
+                            Ativos
+                        </span>
+
+                        <strong id="total-servicos-ativos">
+                            0
+                        </strong>
+
+                    </article>
+
+
+                    <article class="card-resumo-servico">
+
+                        <span>
+                            Agendamento online
+                        </span>
+
+                        <strong id="total-servicos-online">
+                            0
+                        </strong>
+
+                    </article>
+
+                </section>
+
+
+
+                <section class="servicos-painel card-admin">
+
+                    <div class="servicos-painel-topo">
+
+                        <div>
+
+                            <span class="card-admin-etiqueta">
+                                CATÁLOGO
+                            </span>
+
+                            <h2>
+                                Serviços cadastrados
+                            </h2>
+
+                        </div>
+
+
+                        <div class="busca-admin">
+
+                            <input
+                                id="busca-servico"
+                                type="search"
+                                placeholder="Buscar serviço..."
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        id="lista-servicos-admin"
+                        class="lista-servicos-admin"
+                    >
+
+                        <div class="estado-carregando-admin">
+                            Carregando serviços...
+                        </div>
+
+                    </div>
+
+                </section>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 PROFISSIONAIS
+            ================================================== -->
+
+            <section
+                id="pagina-profissionais"
+                class="pagina-admin"
+            >
+
+                <header class="admin-topo">
+
+                    <div>
+
+                        <span class="admin-etiqueta">
+                            EQUIPE
+                        </span>
+
+                        <h1>
+                            Profissionais
+                        </h1>
+
+                        <p>
+                            Cadastre a equipe e defina quais
+                            serviços cada profissional realiza.
+                        </p>
+
+                    </div>
+
+
+                    <div class="admin-topo-acoes">
+
+                        <button
+                            id="botao-novo-profissional"
+                            class="botao-principal-admin"
+                            type="button"
+                        >
+                            + Novo profissional
+                        </button>
+
+                    </div>
+
+                </header>
+
+
+                <section class="servicos-resumo">
+
+                    <article class="card-resumo-servico">
+
+                        <span>
+                            Total de profissionais
+                        </span>
+
+                        <strong id="total-profissionais">
+                            0
+                        </strong>
+
+                    </article>
+
+
+                    <article class="card-resumo-servico">
+
+                        <span>
+                            Ativos
+                        </span>
+
+                        <strong id="total-profissionais-ativos">
+                            0
+                        </strong>
+
+                    </article>
+
+
+                    <article class="card-resumo-servico">
+
+                        <span>
+                            Inativos
+                        </span>
+
+                        <strong id="total-profissionais-inativos">
+                            0
+                        </strong>
+
+                    </article>
+
+                </section>
+
+
+                <section class="servicos-painel card-admin">
+
+                    <div class="servicos-painel-topo">
+
+                        <div>
+
+                            <span class="card-admin-etiqueta">
+                                EQUIPE
+                            </span>
+
+                            <h2>
+                                Profissionais cadastrados
+                            </h2>
+
+                        </div>
+
+
+                        <div class="busca-admin">
+
+                            <input
+                                id="busca-profissional"
+                                type="search"
+                                placeholder="Buscar profissional..."
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        id="lista-profissionais-admin"
+                        class="lista-servicos-admin"
+                    >
+
+                        <div class="estado-carregando-admin">
+                            Carregando profissionais...
+                        </div>
+
+                    </div>
+
+                </section>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 EXPEDIENTE
+            ================================================== -->
+
+            <section
+                id="pagina-expediente"
+                class="pagina-admin"
+            >
+
+                <header class="admin-topo">
+
+                    <div>
+
+                        <span class="admin-etiqueta">
+                            EXPEDIENTE
+                        </span>
+
+                        <h1>
+                            Horários de trabalho
+                        </h1>
+
+                        <p>
+                            Configure os dias e horários
+                            em que a barbearia recebe
+                            agendamentos.
+                        </p>
+
+                    </div>
+
+                </header>
+
+
+
+                <section class="card-admin card-expediente-config">
+
+                    <div class="expediente-cabecalho">
+
+                        <div>
+
+                            <span class="card-admin-etiqueta">
+                                SEMANA
+                            </span>
+
+                            <h2>
+                                Expediente semanal
+                            </h2>
+
+                            <p>
+                                Ative os dias trabalhados
+                                e defina os horários de
+                                início e fim.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <form id="form-expediente">
+
+                        <div
+                            id="lista-dias-expediente"
+                            class="lista-dias-expediente"
+                        ></div>
+
+
+                        <div class="expediente-rodape">
+
+                            <p
+                                id="status-expediente"
+                                class="status-expediente"
+                            ></p>
+
+
+                            <button
+                                class="botao-principal-admin"
+                                type="submit"
+                            >
+                                Salvar alterações
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </section>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 PLANOS
+            ================================================== -->
+
+            <section
+                id="pagina-planos"
+                class="pagina-admin"
+            >
+                <header class="admin-topo">
+                    <div>
+                        <span class="admin-etiqueta">
+                            ASSINATURA
+                        </span>
+
+                        <h1>
+                            Planos
+                        </h1>
+
+                        <p>
+                            Compare os recursos disponíveis e acompanhe
+                            o plano atual da sua barbearia.
+                        </p>
+                    </div>
+                </header>
+
+                <section
+                    id="planos-status-atual"
+                    class="card-admin"
+                    style="margin-bottom: 24px;"
+                >
+                    <span class="card-admin-etiqueta">
+                        SEU PLANO
+                    </span>
+
+                    <h2 id="planos-plano-atual">
+                        Carregando plano...
+                    </h2>
+
+                    <p
+                        id="planos-resumo-atual"
+                        class="texto-secundario-admin"
+                    >
+                        Consultando sua assinatura.
+                    </p>
+                </section>
+
+                <section
+                    id="lista-planos-admin"
+                    style="
+                        display: grid;
+                        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+                        gap: 18px;
+                        align-items: stretch;
+                    "
+                >
+                    <div class="card-admin">
+                        Carregando planos...
+                    </div>
+                </section>
+
+                <p
+                    id="mensagem-planos-admin"
+                    class="status-expediente"
+                    aria-live="polite"
+                    style="margin-top: 18px;"
+                ></p>
+            </section>
+
+
+            <!-- =================================================
+                 FINANCEIRO
+            ================================================== -->
+
+    <!-- =========================================================
+     FINANCEIRO
+========================================================= -->
+
+<section
+    id="pagina-financeiro"
+    class="pagina-admin"
+>
+
+    <header class="admin-topo">
+
+        <div>
+
+            <span class="admin-etiqueta">
+                FINANCEIRO
+            </span>
+
+            <h1>
+                Financeiro
+            </h1>
+
+            <p>
+                Acompanhe o faturamento e os atendimentos
+                realizados pela barbearia.
+            </p>
+
+        </div>
+
+    </header>
+
+
+    <section class="financeiro-resumo">
+
+        <article class="card-admin">
+
+            <span class="card-admin-etiqueta">
+                REALIZADO
+            </span>
+
+            <h3>
+                Faturamento no mês
+            </h3>
+
+            <strong id="financeiro-realizado">
+                R$ 0,00
+            </strong>
+
+            <p>
+                Atendimentos concluídos
+            </p>
+
+        </article>
+
+
+        <article class="card-admin">
+
+            <span class="card-admin-etiqueta">
+                PREVISTO
+            </span>
+
+            <h3>
+                A receber
+            </h3>
+
+            <strong id="financeiro-previsto">
+                R$ 0,00
+            </strong>
+
+            <p>
+                Agendamentos ainda não concluídos
+            </p>
+
+        </article>
+
+
+        <article class="card-admin">
+
+            <span class="card-admin-etiqueta">
+                ATENDIMENTOS
+            </span>
+
+            <h3>
+                Concluídos no mês
+            </h3>
+
+            <strong id="financeiro-concluidos">
+                0
+            </strong>
+
+            <p>
+                Serviços finalizados
+            </p>
+
+        </article>
+
+
+        <article class="card-admin">
+
+            <span class="card-admin-etiqueta">
+                MÉDIA
+            </span>
+
+            <h3>
+                Ticket médio
+            </h3>
+
+            <strong id="financeiro-ticket-medio">
+                R$ 0,00
+            </strong>
+
+            <p>
+                Valor médio por atendimento concluído
+            </p>
+
+        </article>
+
+    </section>
+
+
+    <section class="card-admin financeiro-historico">
+
+        <header class="financeiro-historico-topo">
+
+            <div>
+
+                <span class="card-admin-etiqueta">
+                    MOVIMENTAÇÕES
+                </span>
+
+                <h2>
+                    Resumo do mês
+                </h2>
+
+                <p>
+                    Acompanhe os atendimentos e valores
+                    registrados neste mês.
+                </p>
+
+            </div>
+
+        </header>
+
+
+        <div id="financeiro-movimentacoes">
+
+            <div class="financeiro-vazio">
+                Carregando movimentações...
+            </div>
+
+        </div>
+
+    </section>
+
+</section>
+
+
+        </div>
+
+    </main>
+
+
+
+    <!-- =====================================================
+         MODAL - NOVO AGENDAMENTO MANUAL
+    ====================================================== -->
+
+    <div
+        id="modal-agendamento-manual"
+        class="modal-overlay"
+        aria-hidden="true"
+    >
+
+        <div
+            class="modal-card"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="titulo-modal-agendamento-manual"
+        >
+
+            <div class="modal-topo">
+
+                <div>
+                    <span class="admin-etiqueta">
+                        NOVO AGENDAMENTO
+                    </span>
+
+                    <h2 id="titulo-modal-agendamento-manual">
+                        Agendar cliente
+                    </h2>
+
+                    <p class="texto-secundario-admin">
+                        Registre um atendimento feito pelo WhatsApp,
+                        telefone ou diretamente na barbearia.
+                    </p>
+                </div>
+
+                <button
+                    id="fechar-modal-agendamento-manual"
+                    class="modal-fechar"
+                    type="button"
+                    aria-label="Fechar"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <form id="form-agendamento-manual">
+
+                <div class="campos-duplos">
+
+                    <div class="campo-admin">
+                        <label for="agendamento-cliente-nome">
+                            Nome do cliente
+                        </label>
+
+                        <input
+                            id="agendamento-cliente-nome"
+                            type="text"
+                            placeholder="Ex.: João Silva"
+                            autocomplete="name"
+                            required
+                        >
+                    </div>
+
+
+                    <div class="campo-admin">
+                        <label for="agendamento-cliente-whatsapp">
+                            WhatsApp
+                        </label>
+
+                        <input
+                            id="agendamento-cliente-whatsapp"
+                            type="tel"
+                            inputmode="numeric"
+                            placeholder="(11) 99999-9999"
+                            autocomplete="tel"
+                            required
+                        >
+                    </div>
+
+                </div>
+
+
+                <div class="campos-duplos">
+
+                    <div class="campo-admin">
+                        <label for="agendamento-manual-data">
+                            Data
+                        </label>
+
+                        <input
+                            id="agendamento-manual-data"
+                            type="date"
+                            required
+                        >
+                    </div>
+
+
+                    <div class="campo-admin">
+                        <label for="agendamento-manual-hora">
+                            Horário de início
+                        </label>
+
+                        <input
+                            id="agendamento-manual-hora"
+                            type="time"
+                            step="900"
+                            required
+                        >
+                    </div>
+
+                </div>
+
+
+                <div class="campo-admin">
+                    <label>
+                        Serviços
+                    </label>
+
+                    <div
+                        id="agendamento-manual-servicos"
+                        class="servico-opcoes"
+                    >
+                        <p class="texto-secundario-admin">
+                            Carregando serviços...
+                        </p>
+                    </div>
+                </div>
+
+
+                <div
+                    id="agendamento-manual-resumo"
+                    class="card-admin"
+                    style="margin-top: 14px; padding: 16px;"
+                >
+                    <span class="card-admin-etiqueta">
+                        RESUMO
+                    </span>
+
+                    <p
+                        id="agendamento-manual-resumo-texto"
+                        class="texto-secundario-admin"
+                        style="margin-top: 8px;"
+                    >
+                        Selecione pelo menos um serviço.
+                    </p>
+                </div>
+
+
+                <p
+                    id="agendamento-manual-status"
+                    class="status-expediente"
+                    aria-live="polite"
+                ></p>
+
+
+                <div class="modal-acoes">
+
+                    <button
+                        id="cancelar-agendamento-manual"
+                        class="botao-secundario-admin"
+                        type="button"
+                    >
+                        Cancelar
+                    </button>
+
+                    <button
+                        id="salvar-agendamento-manual"
+                        class="botao-principal-admin"
+                        type="submit"
+                    >
+                        Salvar agendamento
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         MODAL - BLOQUEAR HORÁRIO
+    ====================================================== -->
+
+    <div
+        id="modal-bloqueio"
+        class="modal-overlay"
+        aria-hidden="true"
+    >
+
+        <div
+            class="modal-card"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="titulo-modal-bloqueio"
+        >
+
+            <div class="modal-topo">
+
+                <div>
+
+                    <span class="admin-etiqueta">
+                        NOVO BLOQUEIO
+                    </span>
+
+                    <h2 id="titulo-modal-bloqueio">
+                        Bloquear período
+                    </h2>
+
+                </div>
+
+
+                <button
+                    id="fechar-modal-bloqueio"
+                    class="modal-fechar"
+                    type="button"
+                    aria-label="Fechar"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+
+            <form id="form-bloqueio">
+
+                <div class="campo-admin">
+
+                    <label for="bloqueio-data">
+                        Data
+                    </label>
+
+                    <input
+                        id="bloqueio-data"
+                        type="date"
+                        required
+                    >
+
+                </div>
+
+
+
+                <div class="campos-duplos">
+
+                    <div class="campo-admin">
+
+                        <label for="bloqueio-inicio">
+                            Início
+                        </label>
+
+                        <input
+                            id="bloqueio-inicio"
+                            type="time"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="campo-admin">
+
+                        <label for="bloqueio-fim">
+                            Fim
+                        </label>
+
+                        <input
+                            id="bloqueio-fim"
+                            type="time"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="campo-admin">
+
+                    <label for="bloqueio-motivo">
+                        Motivo
+                    </label>
+
+                    <input
+                        id="bloqueio-motivo"
+                        type="text"
+                        placeholder="Ex.: Almoço, compromisso, folga..."
+                    >
+
+                </div>
+
+
+                <button
+                    class="botao-principal-admin botao-modal"
+                    type="submit"
+                >
+                    Salvar bloqueio
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         MODAL - PROFISSIONAL
+    ====================================================== -->
+
+    <div
+        id="modal-profissional"
+        class="modal-overlay"
+        aria-hidden="true"
+    >
+
+        <div
+            class="modal-card"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="titulo-modal-profissional"
+        >
+
+            <div class="modal-topo">
+
+                <div>
+
+                    <span class="admin-etiqueta">
+                        PROFISSIONAL
+                    </span>
+
+                    <h2 id="titulo-modal-profissional">
+                        Novo profissional
+                    </h2>
+
+                    <p class="texto-secundario-admin">
+                        Cadastre o profissional e escolha os
+                        serviços que ele poderá realizar.
+                    </p>
+
+                </div>
+
+
+                <button
+                    id="fechar-modal-profissional"
+                    class="modal-fechar"
+                    type="button"
+                    aria-label="Fechar"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <form id="form-profissional">
+
+                <input
+                    id="profissional-id"
+                    type="hidden"
+                >
+
+
+                <div class="campo-admin">
+
+                    <label for="profissional-nome">
+                        Nome
+                    </label>
+
+                    <input
+                        id="profissional-nome"
+                        type="text"
+                        placeholder="Ex.: Rodrigo Lima"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="campo-admin">
+
+                    <label for="profissional-servicos">
+                        Serviços realizados
+                    </label>
+
+                    <div
+                        id="profissional-servicos"
+                        class="servico-opcoes"
+                    >
+                        <p class="texto-secundario-admin">
+                            Carregando serviços...
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="servico-opcoes">
+
+                    <label class="opcao-checkbox">
+
+                        <input
+                            id="profissional-ativo"
+                            type="checkbox"
+                            checked
+                        >
+
+                        <span>
+                            Profissional ativo
+                        </span>
+
+                    </label>
+
+                </div>
+
+
+                <p
+                    id="profissional-status"
+                    class="status-expediente"
+                    aria-live="polite"
+                ></p>
+
+
+                <div class="modal-acoes">
+
+                    <button
+                        id="cancelar-profissional"
+                        class="botao-secundario-admin"
+                        type="button"
+                    >
+                        Cancelar
+                    </button>
+
+
+                    <button
+                        id="salvar-profissional"
+                        class="botao-principal-admin"
+                        type="submit"
+                    >
+                        Salvar profissional
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         MODAL - SERVIÇO
+    ====================================================== -->
+
+    <div
+        id="modal-servico"
+        class="modal-overlay"
+        aria-hidden="true"
+    >
+
+        <div
+            class="modal-card modal-servico-card"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="titulo-modal-servico"
+        >
+
+            <div class="modal-topo">
+
+                <div>
+
+                    <span class="admin-etiqueta">
+                        SERVIÇO
+                    </span>
+
+                    <h2 id="titulo-modal-servico">
+                        Novo serviço
+                    </h2>
+
+                </div>
+
+
+                <button
+                    id="fechar-modal-servico"
+                    class="modal-fechar"
+                    type="button"
+                    aria-label="Fechar"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+
+            <form id="form-servico">
+
+                <input
+                    id="servico-id"
+                    type="hidden"
+                >
+
+
+                <div class="campo-admin">
+
+                    <label for="servico-nome">
+                        Nome
+                    </label>
+
+                    <input
+                        id="servico-nome"
+                        type="text"
+                        placeholder="Ex.: Corte"
+                        required
+                    >
+
+                </div>
+
+
+
+                <div class="campo-admin">
+
+                    <label for="servico-descricao">
+                        Descrição
+                    </label>
+
+                    <textarea
+                        id="servico-descricao"
+                        rows="3"
+                        placeholder="Descreva o serviço..."
+                    ></textarea>
+
+                </div>
+
+
+
+                <div class="campos-duplos">
+
+                    <div class="campo-admin">
+
+                        <label for="servico-preco">
+                            Preço
+                        </label>
+
+                        <input
+                            id="servico-preco"
+                            type="number"
+                            min="0"
+                            step="0.01"
+                            placeholder="0,00"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="campo-admin">
+
+                        <label for="servico-duracao">
+                            Duração
+                        </label>
+
+                        <input
+                            id="servico-duracao"
+                            type="number"
+                            min="5"
+                            step="5"
+                            placeholder="30"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="campo-admin">
+
+                    <label for="servico-categoria">
+                        Categoria
+                    </label>
+
+                    <input
+                        id="servico-categoria"
+                        type="text"
+                        placeholder="Ex.: Cabelo"
+                    >
+
+                </div>
+
+
+
+                <div class="servico-opcoes">
+
+                    <label class="opcao-checkbox">
+
+                        <input
+                            id="servico-ativo"
+                            type="checkbox"
+                            checked
+                        >
+
+                        <span>
+                            Serviço ativo
+                        </span>
+
+                    </label>
+
+
+                    <label class="opcao-checkbox">
+
+                        <input
+                            id="servico-online"
+                            type="checkbox"
+                            checked
+                        >
+
+                        <span>
+                            Permitir agendamento online
+                        </span>
+
+                    </label>
+
+                </div>
+
+
+
+                <div class="modal-acoes">
+
+                    <button
+                        id="cancelar-servico"
+                        class="botao-secundario-admin"
+                        type="button"
+                    >
+                        Cancelar
+                    </button>
+
+
+                    <button
+                        id="salvar-servico"
+                        class="botao-principal-admin"
+                        type="submit"
+                    >
+                        Salvar serviço
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+
+         IMPORTANTE:
+         Neste primeiro passo carregamos apenas a infraestrutura
+         comum. O novo admin.js será colocado no próximo passo.
+    ====================================================== -->
+
+    <script
+    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"
+></script>
+
+<script src="../js/supabase.js"></script>
+<script src="../js/contexto-saas.js"></script>
+<script src="./onboarding.js"></script>
+<script src="./admin.js"></script>
+<script src="./visao-geral.js"></script>
+<script src="./link-publico.js"></script>
+<script src="./agenda.js"></script>
+<script src="./detalhes-agendamento.js"></script>
+<script src="./agendamento-manual.js"></script>
+<script src="./clientes.js"></script>
+<script src="./servicos.js"></script>
+<script src="./profissionais.js"></script>
+<script src="./expediente.js"></script>
+<script src="./planos.js"></script>
+<script src="./financeiro.js"></script>
+
+<script src="../js/tema.js"></script>
+
+</body>
+</html>

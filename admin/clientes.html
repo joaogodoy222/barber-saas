@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Clientes | Barber SaaS</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/admin.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/tema.css"
+    >
+</head>
+
+<body>
+
+    <div class="admin-layout">
+
+        <!-- SIDEBAR -->
+        <aside class="admin-sidebar">
+
+            <div class="admin-logo">
+                <span>RL</span>
+
+                <strong>
+                    RODRIGO LIMA
+                </strong>
+
+                <small>
+                    BARBEARIA
+                </small>
+            </div>
+
+            <nav class="admin-menu">
+
+                <a href="admin.html">
+                    Visão geral
+                </a>
+
+                <a href="agenda.html">
+                    Agenda
+                </a>
+
+                <a
+                    href="clientes.html"
+                    class="ativo"
+                >
+                    Clientes
+                </a>
+
+                <a href="servicos.html">
+                    Serviços
+                </a>
+
+                <a href="expediente.html">
+                    Expediente
+                </a>
+
+                <a href="#">
+                    Financeiro
+                </a>
+
+            </nav>
+
+        </aside>
+
+
+        <!-- CONTEÚDO -->
+        <main class="admin-main">
+
+            <header class="clientes-header">
+
+                <div>
+                    <span class="admin-etiqueta">
+                        CLIENTES
+                    </span>
+
+                    <h1>
+                        Seus clientes
+                    </h1>
+
+                    <p>
+                        Acompanhe clientes, visitas e histórico
+                        de atendimentos.
+                    </p>
+                </div>
+
+            </header>
+
+
+            <!-- RESUMO -->
+            <section class="clientes-resumo">
+
+                <article class="cliente-resumo-card">
+
+                    <span>
+                        CLIENTES CADASTRADOS
+                    </span>
+
+                    <strong id="total-clientes">
+                        0
+                    </strong>
+
+                </article>
+
+
+                <article class="cliente-resumo-card">
+
+                    <span>
+                        ATENDIDOS ESTE MÊS
+                    </span>
+
+                    <strong id="clientes-mes">
+                        0
+                    </strong>
+
+                </article>
+
+
+                <article class="cliente-resumo-card">
+
+                    <span>
+                        NOVOS ESTE MÊS
+                    </span>
+
+                    <strong id="clientes-novos">
+                        0
+                    </strong>
+
+                </article>
+
+            </section>
+
+
+            <!-- LISTA -->
+            <section class="clientes-painel">
+
+                <div class="clientes-painel-topo">
+
+                    <div>
+                        <h2>
+                            Clientes
+                        </h2>
+
+                        <p>
+                            Histórico de clientes da barbearia.
+                        </p>
+                    </div>
+
+                    <input
+                        id="busca-cliente"
+                        type="search"
+                        placeholder="Buscar por nome ou WhatsApp..."
+                    >
+
+                </div>
+
+
+                <div class="clientes-tabela-wrapper">
+
+                    <table class="clientes-tabela">
+
+                        <thead>
+                            <tr>
+                                <th>Cliente</th>
+                                <th>WhatsApp</th>
+                                <th>Visitas</th>
+                                <th>Último atendimento</th>
+                                <th>Total gasto</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="lista-clientes">
+
+                            <tr>
+                                <td
+                                    colspan="6"
+                                    class="clientes-vazio"
+                                >
+                                    Carregando clientes...
+                                </td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <script
+    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
+    ></script>
+
+    <script src="../js/supabase.js"></script>
+
+    <script src="auth-guard.js"></script>
+
+    <script src="clientes.js"></script>
+
+    <script src="../js/tema.js"></script>
+</body>
+</html>

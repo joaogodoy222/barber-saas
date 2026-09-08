@@ -1,0 +1,3283 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+
+/* =========================================================
+   BARBER SAAS — ADMIN
+   CSS consolidado para o painel único
+========================================================= */
+
+:root {
+    --cor-fundo: #f5f6f8;
+    --cor-superficie: #ffffff;
+    --cor-superficie-2: #f9fafb;
+    --cor-superficie-3: #f0f1f3;
+
+    --cor-texto: #111216;
+    --cor-texto-2: #555963;
+    --cor-texto-3: #8b909a;
+
+    --cor-borda: #e3e5e8;
+    --cor-borda-forte: #d6d9de;
+
+    --cor-sidebar: #101114;
+    --cor-sidebar-2: #17181d;
+    --cor-sidebar-texto: #ffffff;
+    --cor-sidebar-muted: #8d929c;
+
+    --cor-destaque: #d71920;
+    --cor-destaque-hover: #bb141b;
+    --cor-destaque-suave: rgba(215, 25, 32, 0.09);
+
+    --cor-sucesso: #169b54;
+    --cor-sucesso-suave: rgba(22, 155, 84, 0.11);
+
+    --cor-alerta: #b7791f;
+    --cor-alerta-suave: rgba(183, 121, 31, 0.12);
+
+    --raio-xs: 8px;
+    --raio-sm: 11px;
+    --raio-md: 15px;
+    --raio-lg: 20px;
+    --raio-xl: 26px;
+
+    --sombra-card: 0 10px 35px rgba(17, 18, 22, 0.055);
+    --sombra-hover: 0 16px 45px rgba(17, 18, 22, 0.09);
+
+    --sidebar-largura: 250px;
+    --conteudo-max: 1500px;
+
+    /* Compatibilidade com nomes antigos */
+    --preto: var(--cor-texto);
+    --grafite: var(--cor-sidebar);
+    --grafite-claro: var(--cor-sidebar-2);
+    --branco: var(--cor-superficie);
+    --fundo: var(--cor-fundo);
+    --cinza-50: var(--cor-superficie-2);
+    --cinza-100: var(--cor-superficie-3);
+    --cinza-200: var(--cor-borda);
+    --cinza-300: var(--cor-borda-forte);
+    --cinza-400: var(--cor-texto-3);
+    --cinza-600: var(--cor-texto-2);
+    --cinza-800: #2b2e35;
+    --vermelho: var(--cor-destaque);
+    --vermelho-claro: #fff0f1;
+    --raio: var(--raio-md);
+    --raio-grande: var(--raio-lg);
+    --sombra: var(--sombra-card);
+}
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    min-height: 100%;
+    background: var(--cor-fundo);
+}
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+    background: var(--cor-fundo);
+    color: var(--cor-texto);
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+button,
+input,
+textarea,
+select {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+button:disabled {
+    cursor: not-allowed;
+}
+
+input,
+textarea,
+select {
+    color: var(--cor-texto);
+}
+
+a {
+    color: inherit;
+}
+
+::selection {
+    background: rgba(215, 25, 32, 0.18);
+}
+
+
+/* =========================================================
+   LOGIN
+========================================================= */
+
+#login-admin {
+    width: min(430px, calc(100% - 32px));
+    margin: 10vh auto 0;
+    padding: 34px;
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio-xl);
+    background: var(--cor-superficie);
+    box-shadow: var(--sombra-card);
+}
+
+#login-admin h1 {
+    margin-bottom: 8px;
+    font-size: 30px;
+    line-height: 1.15;
+    letter-spacing: -1px;
+}
+
+#login-admin > p:first-of-type {
+    margin-bottom: 24px;
+    color: var(--cor-texto-2);
+}
+
+#email-admin,
+#senha-admin {
+    width: 100%;
+    height: 48px;
+    margin-bottom: 12px;
+    padding: 0 14px;
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio-sm);
+    outline: none;
+    background: var(--cor-superficie-2);
+    transition: border-color .18s, box-shadow .18s, background .18s;
+}
+
+#email-admin:focus,
+#senha-admin:focus {
+    border-color: rgba(215, 25, 32, .7);
+    background: var(--cor-superficie);
+    box-shadow: 0 0 0 4px rgba(215, 25, 32, .08);
+}
+
+#botao-login {
+    width: 100%;
+    min-height: 48px;
+    margin-top: 4px;
+    border: none;
+    border-radius: var(--raio-sm);
+    background: var(--cor-destaque);
+    color: #fff;
+    font-weight: 800;
+    transition: transform .18s, background .18s;
+}
+
+#botao-login:hover {
+    background: var(--cor-destaque-hover);
+    transform: translateY(-1px);
+}
+
+#mensagem-login {
+    min-height: 18px;
+    margin-top: 14px;
+    color: var(--cor-destaque);
+    font-size: 12px;
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   PAINEL ÚNICO — LAYOUT
+========================================================= */
+
+#painel-admin,
+.admin-layout {
+    min-height: 100vh;
+}
+
+#painel-admin {
+    position: relative;
+    padding-left: var(--sidebar-largura);
+    background: var(--cor-fundo);
+}
+
+.admin-layout {
+    display: grid;
+    grid-template-columns: var(--sidebar-largura) minmax(0, 1fr);
+}
+
+.admin-conteudo,
+.admin-main {
+    width: 100%;
+    min-width: 0;
+    padding: 42px 48px 60px;
+}
+
+.admin-conteudo {
+    max-width: none;
+}
+
+.pagina-admin {
+    display: none;
+    width: 100%;
+    max-width: var(--conteudo-max);
+    margin: 0 auto;
+}
+
+.pagina-admin.ativa {
+    display: block;
+    animation: paginaEntrar .18s ease-out;
+}
+
+@keyframes paginaEntrar {
+    from {
+        opacity: .72;
+        transform: translateY(3px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* =========================================================
+   SIDEBAR — COMPATÍVEL COM PAINEL ANTIGO E NOVO
+========================================================= */
+
+.admin-sidebar,
+.sidebar {
+    position: fixed;
+    z-index: 60;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: var(--sidebar-largura);
+    min-height: 100vh;
+    padding: 28px 18px 22px;
+    overflow-y: auto;
+    background: var(--cor-sidebar);
+    color: var(--cor-sidebar-texto);
+    border-right: 1px solid rgba(255, 255, 255, .04);
+}
+
+.admin-sidebar {
+    display: flex;
+    flex-direction: column;
+}
+
+.admin-logo,
+.sidebar-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 48px;
+    margin: 0 4px 34px;
+}
+
+.admin-logo-marca,
+.logo-simbolo {
+    width: 44px;
+    height: 44px;
+    flex: 0 0 44px;
+    display: grid;
+    place-items: center;
+    border-radius: 13px;
+    background: linear-gradient(145deg, #e1262d, #bf1118);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: .5px;
+    box-shadow: 0 10px 28px rgba(215, 25, 32, .22);
+}
+
+.admin-logo > div:last-child,
+.sidebar-logo > div:last-child {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.admin-logo strong,
+.sidebar-logo strong {
+    overflow: hidden;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: .65px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.admin-logo span,
+.sidebar-logo span {
+    margin-top: 2px;
+    color: var(--cor-sidebar-muted);
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 1.55px;
+    text-transform: uppercase;
+}
+
+.admin-menu,
+.sidebar-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.admin-menu-item,
+.sidebar-menu a {
+    position: relative;
+    width: 100%;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    padding: 0 13px;
+    border: 1px solid transparent;
+    border-radius: 11px;
+    outline: none;
+    background: transparent;
+    color: #9da2ac;
+    text-align: left;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    transition: background .18s, color .18s, border-color .18s, transform .18s;
+}
+
+.admin-menu-item:hover,
+.sidebar-menu a:hover {
+    background: rgba(255, 255, 255, .055);
+    color: #fff;
+}
+
+.admin-menu-item.ativo,
+.sidebar-menu a.ativo {
+    background: #1d1f24;
+    border-color: rgba(255, 255, 255, .055);
+    color: #fff;
+}
+
+.admin-menu-item.ativo::before,
+.sidebar-menu a.ativo::before {
+    content: "";
+    position: absolute;
+    left: -1px;
+    top: 10px;
+    bottom: 10px;
+    width: 3px;
+    border-radius: 0 5px 5px 0;
+    background: var(--cor-destaque);
+}
+
+.admin-menu-icone {
+    width: 20px;
+    flex: 0 0 20px;
+    display: inline-grid;
+    place-items: center;
+    color: currentColor;
+    opacity: .92;
+}
+
+.sidebar-rodape {
+    margin-top: auto;
+    padding-top: 22px;
+}
+
+.sidebar-rodape button,
+#botao-logout,
+#botao-sair {
+    width: 100%;
+    min-height: 42px;
+    padding: 0 13px;
+    border: none;
+    border-radius: 10px;
+    background: transparent;
+    color: #858b95;
+    text-align: left;
+    font-weight: 700;
+    transition: .18s;
+}
+
+.sidebar-rodape button:hover,
+#botao-logout:hover,
+#botao-sair:hover {
+    background: rgba(255, 255, 255, .05);
+    color: #fff;
+}
+
+
+/* =========================================================
+   CABEÇALHOS
+========================================================= */
+
+.admin-topo,
+.admin-cabecalho,
+.clientes-header,
+.servicos-cabecalho {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 26px;
+    margin-bottom: 28px;
+}
+
+.admin-topo > div:first-child,
+.admin-cabecalho > div:first-child,
+.servicos-cabecalho > div:first-child {
+    min-width: 0;
+}
+
+.admin-etiqueta,
+.admin-subtitulo,
+.admin-eyebrow,
+.card-admin-etiqueta,
+.card-admin-etiqueta,
+.card-admin-etiqueta,
+.card-admin-etiqueta {
+    display: inline-block;
+    color: var(--cor-destaque);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.65px;
+    text-transform: uppercase;
+}
+
+.admin-topo h1,
+.admin-cabecalho h1,
+.clientes-header h1,
+.servicos-cabecalho h1,
+#pagina-visao-geral h1,
+#pagina-financeiro > .admin-topo h1 {
+    margin-top: 8px;
+    color: var(--cor-texto);
+    font-size: clamp(32px, 3vw, 42px);
+    line-height: 1.06;
+    letter-spacing: -1.55px;
+}
+
+.admin-topo p,
+.admin-cabecalho p,
+.clientes-header p,
+.servicos-cabecalho p {
+    max-width: 730px;
+    margin-top: 8px;
+    color: var(--cor-texto-2);
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.admin-topo-acoes,
+.servicos-acoes-topo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+/* =========================================================
+   BOTÕES GERAIS
+========================================================= */
+
+.botao-principal-admin,
+.botao-secundario-admin,
+.botao-novo-servico,
+.botao-salvar-expediente {
+    min-height: 44px;
+    padding: 0 17px;
+    border-radius: var(--raio-sm);
+    font-size: 12px;
+    font-weight: 800;
+    transition: transform .18s, background .18s, border-color .18s, color .18s, box-shadow .18s;
+}
+
+.botao-principal-admin,
+.botao-novo-servico,
+.botao-salvar-expediente {
+    border: 1px solid transparent;
+    background: var(--cor-destaque);
+    color: #fff;
+    box-shadow: 0 8px 22px rgba(215, 25, 32, .14);
+}
+
+.botao-principal-admin:hover,
+.botao-novo-servico:hover,
+.botao-salvar-expediente:hover {
+    background: var(--cor-destaque-hover);
+    transform: translateY(-1px);
+}
+
+.botao-secundario-admin {
+    border: 1px solid var(--cor-borda);
+    background: var(--cor-superficie);
+    color: var(--cor-texto);
+}
+
+.botao-secundario-admin:hover {
+    border-color: var(--cor-borda-forte);
+    background: var(--cor-superficie-2);
+}
+
+.botao-tema {
+    width: 44px;
+    height: 44px;
+    display: grid;
+    place-items: center;
+    flex: 0 0 44px;
+    border: 1px solid rgba(255, 255, 255, .07);
+    border-radius: var(--raio-sm);
+    background: var(--cor-sidebar-2);
+    color: #fff;
+    font-size: 17px;
+    transition: transform .18s, background .18s;
+}
+
+.admin-topo .botao-tema,
+.servicos-cabecalho .botao-tema {
+    border-color: var(--cor-borda);
+    background: var(--cor-superficie);
+    color: var(--cor-texto);
+}
+
+.botao-tema:hover {
+    transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   CARDS GERAIS
+========================================================= */
+
+.card-admin,
+.agenda-principal,
+.agenda-controles,
+.card-expediente-config,
+.servicos-painel,
+.servico-resumo-card,
+.clientes-painel,
+.cliente-resumo-card,
+.financeiro-card,
+.financeiro-historico {
+    border: 1px solid var(--cor-borda);
+    background: var(--cor-superficie);
+    box-shadow: var(--sombra-card);
+}
+
+.card-admin {
+    padding: 22px;
+    border-radius: var(--raio-lg);
+}
+
+.card-admin h3 {
+    margin: 7px 0 18px;
+    color: var(--cor-texto);
+    font-size: 17px;
+    line-height: 1.25;
+}
+
+
+/* =========================================================
+   VISÃO GERAL
+========================================================= */
+
+#pagina-visao-geral {
+    position: relative;
+}
+
+#pagina-visao-geral .admin-cabecalho,
+#pagina-visao-geral .admin-topo {
+    margin-bottom: 26px;
+}
+
+/* Compatibilidade com a versão em que os indicadores ficaram
+   dentro de um bloco simples */
+#pagina-visao-geral .dashboard-resumo,
+#pagina-visao-geral .dashboard-metricas,
+#pagina-visao-geral .visao-geral-resumo,
+#pagina-visao-geral .resumo-dashboard {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 14px;
+    margin-bottom: 18px;
+}
+
+#pagina-visao-geral .dashboard-card,
+#pagina-visao-geral .card-dashboard,
+#pagina-visao-geral .visao-geral-card {
+    min-height: 128px;
+    padding: 20px;
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio-md);
+    background: var(--cor-superficie);
+    box-shadow: var(--sombra-card);
+}
+
+#pagina-visao-geral [id^="dashboard-"] {
+    color: inherit;
+}
+
+/* Números do topo quando o ID está aplicado diretamente no valor */
+#dashboard-agendamentos-hoje,
+#dashboard-faturamento-hoje,
+#dashboard-total-clientes,
+#dashboard-servicos-ativos {
+    font-weight: 800;
+}
+
+/* Dá cara de card aos containers logo abaixo do resumo */
+#pagina-visao-geral > section:not(.pagina-admin),
+#pagina-visao-geral > article,
+#pagina-visao-geral > .card-admin {
+    border-radius: var(--raio-lg);
+}
+
+#dashboard-proximos-agendamentos {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    margin-top: 14px;
+}
+
+.dashboard-atendimento {
+    display: grid;
+    grid-template-columns: 72px minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 14px;
+    min-height: 58px;
+    padding: 11px 12px;
+    border: 1px solid var(--cor-borda);
+    border-radius: 12px;
+    background: var(--cor-superficie-2);
+}
+
+.dashboard-atendimento-hora {
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.dashboard-atendimento-info {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.dashboard-atendimento-info strong {
+    overflow: hidden;
+    font-size: 12px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.dashboard-atendimento-info span {
+    color: var(--cor-texto-3);
+    font-size: 10px;
+    text-transform: capitalize;
+}
+
+.dashboard-atendimento-valor {
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.dashboard-vazio {
+    padding: 18px 0;
+    color: var(--cor-texto-3);
+    font-size: 12px;
+}
+
+#dashboard-expediente-hoje {
+    margin-top: 8px;
+    color: var(--cor-texto-2);
+    font-size: 13px;
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   AGENDA — TOPO E CONTROLES
+========================================================= */
+
+.agenda-controles {
+    min-height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    margin-bottom: 18px;
+    padding: 14px 16px;
+    border-radius: var(--raio-md);
+}
+
+.controle-data {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.controle-data button {
+    width: 38px;
+    height: 38px;
+    display: grid;
+    place-items: center;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    background: var(--cor-superficie-3);
+    color: var(--cor-texto);
+    font-size: 16px;
+    transition: .18s;
+}
+
+.controle-data button:hover {
+    border-color: var(--cor-borda-forte);
+    background: var(--cor-superficie-2);
+}
+
+.controle-data > div {
+    min-width: 190px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.controle-data span {
+    color: var(--cor-texto-3);
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: .7px;
+    text-transform: uppercase;
+}
+
+.controle-data strong {
+    font-size: 12px;
+}
+
+#data-agenda-admin {
+    min-height: 40px;
+    padding: 0 12px;
+    border: 1px solid var(--cor-borda);
+    border-radius: 10px;
+    outline: none;
+    background: var(--cor-superficie-2);
+}
+
+#data-agenda-admin:focus {
+    border-color: rgba(215, 25, 32, .7);
+    box-shadow: 0 0 0 3px rgba(215, 25, 32, .07);
+}
+
+
+/* =========================================================
+   AGENDA — LAYOUT
+========================================================= */
+
+.agenda-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 300px;
+    gap: 18px;
+    align-items: start;
+}
+
+.agenda-principal {
+    min-width: 0;
+    padding: 24px;
+    border-radius: var(--raio-lg);
+}
+
+.agenda-lateral {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.agenda-cabecalho {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.agenda-cabecalho h2 {
+    margin-bottom: 4px;
+    font-size: 18px;
+}
+
+.agenda-cabecalho p {
+    color: var(--cor-texto-2);
+    font-size: 12px;
+}
+
+.agenda-legenda {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    color: var(--cor-texto-2);
+    font-size: 10px;
+}
+
+.agenda-legenda span {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.agenda-legenda i {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.legenda-agendamento {
+    background: var(--cor-texto);
+}
+
+.legenda-bloqueio {
+    background: var(--cor-destaque);
+}
+
+.metricas-agenda {
+    display: flex;
+    flex-direction: column;
+}
+
+.metricas-agenda > div {
+    min-height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    border-bottom: 1px solid var(--cor-borda);
+}
+
+.metricas-agenda > div:last-child {
+    border-bottom: none;
+}
+
+.metricas-agenda span {
+    color: var(--cor-texto-2);
+    font-size: 11px;
+}
+
+.metricas-agenda strong {
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   AGENDA — TIMELINE
+========================================================= */
+
+.timeline-agenda {
+    min-height: 520px;
+}
+
+.estado-carregando-admin {
+    min-height: 360px;
+    display: grid;
+    place-items: center;
+    color: var(--cor-texto-3);
+    font-size: 12px;
+}
+
+.agenda-visual {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 68px minmax(0, 1fr);
+    margin-top: 12px;
+}
+
+.agenda-coluna-horas {
+    position: relative;
+    min-width: 68px;
+}
+
+.agenda-marcador-hora {
+    position: absolute;
+    right: 14px;
+    transform: translateY(-8px);
+    color: var(--cor-texto-3);
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.agenda-grade {
+    position: relative;
+    min-height: 300px;
+    border-left: 1px solid var(--cor-borda);
+}
+
+.agenda-linha-hora,
+.agenda-linha-meia-hora {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 1px;
+}
+
+.agenda-linha-hora {
+    background: var(--cor-borda);
+}
+
+.agenda-linha-meia-hora {
+    border-top: 1px dashed var(--cor-borda);
+    opacity: .45;
+}
+
+.evento-agenda-visual {
+    position: absolute;
+    z-index: 2;
+    left: 10px;
+    right: 10px;
+    min-height: 44px;
+    display: grid;
+    grid-template-columns: 82px minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 13px;
+    padding: 9px 12px;
+    overflow: hidden;
+    border-radius: 10px;
+    transition: transform .15s, box-shadow .15s;
+}
+
+.evento-agenda-visual:hover {
+    z-index: 4;
+    transform: translateX(2px);
+    box-shadow: 0 8px 22px rgba(0, 0, 0, .09);
+}
+
+.evento-agenda-visual.agendamento {
+    border: 1px solid var(--cor-borda);
+    border-left: 4px solid var(--cor-texto);
+    background: var(--cor-superficie-2);
+}
+
+.evento-agenda-visual.bloqueio {
+    border: 1px solid rgba(215, 25, 32, .16);
+    border-left: 4px solid var(--cor-destaque);
+    background: var(--cor-destaque-suave);
+}
+
+.evento-visual-horario {
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.evento-visual-horario span {
+    display: block;
+    margin-top: 2px;
+    color: var(--cor-texto-3);
+    font-size: 9px;
+    font-weight: 600;
+}
+
+.evento-visual-conteudo {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.evento-visual-conteudo strong {
+    overflow: hidden;
+    font-size: 11px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.evento-visual-conteudo span {
+    color: var(--cor-texto-2);
+    font-size: 9px;
+}
+
+.evento-agenda,
+.evento-agenda-visual {
+    color: var(--cor-texto);
+}
+
+.evento-agenda {
+    display: grid;
+    grid-template-columns: 86px minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 9px;
+    padding: 14px;
+    border: 1px solid var(--cor-borda);
+    border-radius: 12px;
+    background: var(--cor-superficie-2);
+}
+
+.evento-agenda.agendamento {
+    border-left: 4px solid var(--cor-texto);
+}
+
+.evento-agenda.bloqueio {
+    border-left: 4px solid var(--cor-destaque);
+    background: var(--cor-destaque-suave);
+}
+
+.evento-horario {
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.evento-horario span {
+    display: block;
+    color: var(--cor-texto-3);
+    font-size: 9px;
+}
+
+.evento-conteudo {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.evento-conteudo strong {
+    font-size: 12px;
+}
+
+.evento-conteudo span {
+    color: var(--cor-texto-2);
+    font-size: 10px;
+}
+
+.botao-remover-bloqueio {
+    border: none;
+    background: transparent;
+    color: var(--cor-destaque);
+    font-size: 10px;
+    font-weight: 800;
+}
+
+.botao-remover-bloqueio:hover {
+    text-decoration: underline;
+}
+
+.agenda-dia-vazio {
+    position: absolute;
+    top: 34px;
+    left: 24px;
+    color: var(--cor-texto-3);
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   CLIENTES
+========================================================= */
+
+.clientes-resumo {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+    margin-bottom: 18px;
+}
+
+.cliente-resumo-card {
+    min-height: 108px;
+    padding: 20px;
+    border-radius: var(--raio-md);
+}
+
+.cliente-resumo-card span {
+    display: block;
+    margin-bottom: 10px;
+    color: var(--cor-texto-3);
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: .7px;
+    text-transform: uppercase;
+}
+
+.cliente-resumo-card strong {
+    display: block;
+    font-size: 28px;
+    line-height: 1;
+    letter-spacing: -.8px;
+}
+
+.clientes-painel {
+    padding: 22px;
+    border-radius: var(--raio-lg);
+}
+
+.clientes-painel-topo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--cor-borda);
+}
+
+.clientes-painel-topo h2 {
+    margin-bottom: 4px;
+    font-size: 19px;
+}
+
+.clientes-painel-topo p {
+    color: var(--cor-texto-3);
+    font-size: 11px;
+}
+
+.clientes-painel-topo input {
+    width: min(320px, 100%);
+    height: 42px;
+    padding: 0 13px;
+    border: 1px solid var(--cor-borda);
+    border-radius: 10px;
+    outline: none;
+    background: var(--cor-superficie-2);
+}
+
+.clientes-painel-topo input:focus {
+    border-color: rgba(215, 25, 32, .7);
+    box-shadow: 0 0 0 3px rgba(215, 25, 32, .07);
+}
+
+.clientes-tabela-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.clientes-tabela {
+    width: 100%;
+    min-width: 780px;
+    border-collapse: collapse;
+}
+
+.clientes-tabela thead th {
+    padding: 14px 11px;
+    border-bottom: 1px solid var(--cor-borda);
+    color: var(--cor-texto-3);
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: .55px;
+    text-align: left;
+    text-transform: uppercase;
+}
+
+.clientes-tabela tbody td {
+    padding: 15px 11px;
+    border-bottom: 1px solid var(--cor-borda);
+    font-size: 11px;
+    vertical-align: middle;
+}
+
+.clientes-tabela tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.clientes-tabela tbody tr {
+    transition: background .15s;
+}
+
+.clientes-tabela tbody tr:hover {
+    background: rgba(127, 127, 135, .05);
+}
+
+.cliente-identificacao {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.cliente-avatar {
+    width: 37px;
+    height: 37px;
+    flex: 0 0 37px;
+    display: grid;
+    place-items: center;
+    border-radius: 10px;
+    background: var(--cor-destaque-suave);
+    color: var(--cor-destaque);
+    font-size: 10px;
+    font-weight: 900;
+}
+
+.cliente-identificacao strong {
+    display: block;
+    margin-bottom: 2px;
+    font-size: 11px;
+}
+
+.cliente-identificacao span {
+    color: var(--cor-texto-3);
+    font-size: 9px;
+}
+
+.cliente-whatsapp {
+    color: var(--cor-texto-2);
+    font-weight: 600;
+}
+
+.cliente-visitas,
+.cliente-total {
+    font-weight: 800;
+}
+
+.botao-ver-cliente {
+    padding: 7px 10px;
+    border: 1px solid var(--cor-borda);
+    border-radius: 9px;
+    background: transparent;
+    color: var(--cor-texto);
+    font-size: 9px;
+    font-weight: 800;
+    transition: .18s;
+}
+
+.botao-ver-cliente:hover {
+    border-color: var(--cor-destaque);
+    color: var(--cor-destaque);
+}
+
+.clientes-vazio {
+    padding: 40px !important;
+    color: var(--cor-texto-3);
+    text-align: center;
+    font-size: 11px !important;
+}
+
+
+/* =========================================================
+   SERVIÇOS
+========================================================= */
+
+.servicos-resumo {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+    margin-bottom: 18px;
+}
+
+.servico-resumo-card {
+    min-height: 108px;
+    padding: 20px;
+    border-radius: var(--raio-md);
+}
+
+.servico-resumo-card span {
+    display: block;
+    margin-bottom: 10px;
+    color: var(--cor-texto-3);
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: .7px;
+    text-transform: uppercase;
+}
+
+.servico-resumo-card strong {
+    display: block;
+    font-size: 28px;
+    line-height: 1;
+}
+
+.servicos-painel {
+    padding: 22px;
+    border-radius: var(--raio-lg);
+}
+
+.servicos-painel-cabecalho {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--cor-borda);
+}
+
+.servicos-painel-cabecalho h2 {
+    margin-bottom: 4px;
+    font-size: 19px;
+}
+
+.servicos-painel-cabecalho p {
+    color: var(--cor-texto-3);
+    font-size: 11px;
+}
+
+.servicos-busca {
+    width: min(300px, 100%);
+}
+
+.servicos-busca input {
+    width: 100%;
+    height: 42px;
+    padding: 0 13px;
+    border: 1px solid var(--cor-borda);
+    border-radius: 10px;
+    outline: none;
+    background: var(--cor-superficie-2);
+}
+
+.servicos-busca input:focus {
+    border-color: rgba(215, 25, 32, .7);
+    box-shadow: 0 0 0 3px rgba(215, 25, 32, .07);
+}
+
+.lista-servicos-admin {
+    min-height: 180px;
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    padding-top: 16px;
+}
+
+.servico-admin-card {
+    display: grid;
+    grid-template-columns: minmax(210px, 1fr) 110px 100px 130px 78px;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 16px;
+    border: 1px solid var(--cor-borda);
+    border-radius: 13px;
+    background: var(--cor-superficie-2);
+    transition: transform .18s, border-color .18s, box-shadow .18s;
+}
+
+.servico-admin-card:hover {
+    border-color: var(--cor-borda-forte);
+    transform: translateY(-1px);
+    box-shadow: 0 8px 24px rgba(17, 18, 22, .045);
+}
+
+.servico-admin-info {
+    min-width: 0;
+}
+
+.servico-admin-info strong {
+    display: block;
+    margin-bottom: 3px;
+    font-size: 12px;
+}
+
+.servico-admin-info p {
+    overflow: hidden;
+    color: var(--cor-texto-3);
+    font-size: 10px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.servico-admin-dado span {
+    display: block;
+    margin-bottom: 3px;
+    color: var(--cor-texto-3);
+    font-size: 8px;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.servico-admin-dado strong {
+    font-size: 11px;
+}
+
+.status-servico {
+    width: fit-content;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 8px;
+    border-radius: 999px;
+    font-size: 9px;
+    font-weight: 800;
+}
+
+.status-servico::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+}
+
+.status-servico.ativo {
+    background: var(--cor-sucesso-suave);
+    color: var(--cor-sucesso);
+}
+
+.status-servico.inativo {
+    background: rgba(127, 127, 135, .12);
+    color: var(--cor-texto-3);
+}
+
+.botao-status-servico {
+    border: none;
+    font-family: inherit;
+}
+
+.botao-status-servico:hover {
+    filter: brightness(1.08);
+}
+
+.botao-status-servico:disabled {
+    opacity: .55;
+    cursor: wait;
+}
+
+.botao-editar-servico {
+    min-height: 34px;
+    padding: 0 10px;
+    border: 1px solid var(--cor-borda);
+    border-radius: 9px;
+    background: transparent;
+    color: var(--cor-texto);
+    font-size: 9px;
+    font-weight: 800;
+    transition: .18s;
+}
+
+.botao-editar-servico:hover {
+    border-color: var(--cor-destaque);
+    color: var(--cor-destaque);
+}
+
+
+/* =========================================================
+   EXPEDIENTE — HTML ANTIGO
+========================================================= */
+
+.card-expediente-config {
+    margin-top: 18px;
+    padding: 24px;
+    border-radius: var(--raio-lg);
+}
+
+.cabecalho-expediente-config,
+.card-expediente-cabecalho {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.cabecalho-expediente-config h2,
+.card-expediente-cabecalho h2 {
+    margin-bottom: 5px;
+    font-size: 20px;
+}
+
+.cabecalho-expediente-config p,
+.card-expediente-cabecalho p {
+    color: var(--cor-texto-2);
+    font-size: 12px;
+}
+
+.lista-dias-expediente {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.dia-expediente {
+    min-height: 80px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 20px;
+    padding: 16px 18px;
+    border: 1px solid var(--cor-borda);
+    border-radius: 13px;
+    background: var(--cor-superficie-2);
+}
+
+.dia-expediente.ativo {
+    border-color: rgba(215, 25, 32, .25);
+    background: var(--cor-destaque-suave);
+}
+
+.dia-expediente-identificacao {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.dia-expediente-identificacao strong {
+    font-size: 12px;
+}
+
+.estado-dia {
+    color: var(--cor-texto-3);
+    font-size: 10px;
+}
+
+.dia-expediente.ativo .estado-dia {
+    color: var(--cor-destaque);
+}
+
+.switch-expediente {
+    position: relative;
+    width: 42px;
+    height: 23px;
+    display: inline-flex;
+    flex: 0 0 42px;
+    cursor: pointer;
+}
+
+.switch-expediente input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.switch-expediente-visual {
+    position: absolute;
+    inset: 0;
+    border-radius: 999px;
+    background: #d8dade;
+    transition: .18s;
+}
+
+.switch-expediente-visual::after {
+    content: "";
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 17px;
+    height: 17px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, .18);
+    transition: .18s;
+}
+
+.switch-expediente input:checked + .switch-expediente-visual {
+    background: var(--cor-destaque);
+}
+
+.switch-expediente input:checked + .switch-expediente-visual::after {
+    transform: translateX(19px);
+}
+
+.horarios-dia {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.campo-horario {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.campo-horario label {
+    color: var(--cor-texto-3);
+    font-size: 8px;
+    font-weight: 800;
+    letter-spacing: .5px;
+    text-transform: uppercase;
+}
+
+.campo-horario input {
+    width: 112px;
+    height: 40px;
+    padding: 0 10px;
+    border: 1px solid var(--cor-borda);
+    border-radius: 9px;
+    outline: none;
+    background: var(--cor-superficie);
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.campo-horario input:disabled {
+    opacity: .42;
+}
+
+.separador-horario {
+    margin-top: 14px;
+    color: var(--cor-texto-3);
+    font-size: 13px;
+}
+
+.acoes-expediente {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 14px;
+    margin-top: 20px;
+    padding-top: 18px;
+    border-top: 1px solid var(--cor-borda);
+}
+
+
+/* =========================================================
+   EXPEDIENTE — JS NOVO
+========================================================= */
+
+#lista-dias-expediente {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 18px;
+}
+
+.expediente-dia-item {
+    min-height: 78px;
+    display: grid;
+    grid-template-columns: minmax(180px, 1fr) auto;
+    align-items: center;
+    gap: 22px;
+    padding: 15px 17px;
+    border: 1px solid var(--cor-borda);
+    border-radius: 13px;
+    background: var(--cor-superficie-2);
+    transition: border-color .18s, background .18s, transform .18s;
+}
+
+.expediente-dia-item:hover {
+    transform: translateY(-1px);
+}
+
+.expediente-dia-item.ativo {
+    border-color: rgba(215, 25, 32, .24);
+    background: var(--cor-destaque-suave);
+}
+
+.expediente-dia-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+}
+
+.expediente-dia-check {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    font-size: 12px;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.expediente-dia-check input {
+    width: 17px;
+    height: 17px;
+    accent-color: var(--cor-destaque);
+}
+
+.expediente-dia-status {
+    color: var(--cor-texto-3);
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: .4px;
+    text-transform: uppercase;
+}
+
+.expediente-dia-item.ativo .expediente-dia-status {
+    color: var(--cor-destaque);
+}
+
+.expediente-horarios {
+    display: flex;
+    align-items: flex-end;
+    gap: 10px;
+}
+
+.expediente-horarios > div {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.expediente-horarios label {
+    color: var(--cor-texto-3);
+    font-size: 8px;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.expediente-horarios input {
+    width: 110px;
+    height: 39px;
+    padding: 0 10px;
+    border: 1px solid var(--cor-borda);
+    border-radius: 9px;
+    outline: none;
+    background: var(--cor-superficie);
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.expediente-horarios input:focus {
+    border-color: rgba(215, 25, 32, .65);
+}
+
+.expediente-horarios input:disabled {
+    opacity: .42;
+}
+
+.expediente-separador {
+    padding-bottom: 10px;
+    color: var(--cor-texto-3);
+    font-size: 10px;
+}
+
+#form-expediente > button[type="submit"] {
+    min-height: 44px;
+    margin-top: 18px;
+    padding: 0 18px;
+    border: none;
+    border-radius: 10px;
+    background: var(--cor-destaque);
+    color: #fff;
+    font-weight: 800;
+}
+
+.status-expediente,
+#status-expediente {
+    min-height: 18px;
+    margin-top: 14px;
+    color: var(--cor-texto-2);
+    font-size: 11px;
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   FINANCEIRO
+========================================================= */
+
+.financeiro-resumo {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 14px;
+    margin-bottom: 18px;
+}
+
+.financeiro-card {
+    min-height: 145px;
+    padding: 20px;
+    border-radius: var(--raio-md);
+}
+
+.financeiro-card h3 {
+    margin: 7px 0 14px;
+    font-size: 14px;
+}
+
+.financeiro-card > strong {
+    display: block;
+    margin-bottom: 6px;
+    font-size: clamp(21px, 2vw, 29px);
+    line-height: 1;
+    letter-spacing: -.7px;
+}
+
+.financeiro-card > p {
+    color: var(--cor-texto-3);
+    font-size: 10px;
+}
+
+.financeiro-historico {
+    padding: 22px;
+    border-radius: var(--raio-lg);
+}
+
+.financeiro-historico-topo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--cor-borda);
+}
+
+.financeiro-historico-topo h2 {
+    margin: 5px 0 4px;
+    font-size: 20px;
+}
+
+.financeiro-historico-topo p {
+    color: var(--cor-texto-2);
+    font-size: 11px;
+}
+
+#financeiro-movimentacoes {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    padding-top: 16px;
+}
+
+.financeiro-movimentacao {
+    display: grid;
+    grid-template-columns: 120px minmax(180px, 1fr) 110px 110px;
+    align-items: center;
+    gap: 16px;
+    min-height: 62px;
+    padding: 12px 14px;
+    border: 1px solid var(--cor-borda);
+    border-radius: 12px;
+    background: var(--cor-superficie-2);
+}
+
+.financeiro-movimentacao-data,
+.financeiro-movimentacao-cliente {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.financeiro-movimentacao-data strong,
+.financeiro-movimentacao-cliente strong {
+    overflow: hidden;
+    font-size: 11px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.financeiro-movimentacao-data span,
+.financeiro-movimentacao-cliente span {
+    color: var(--cor-texto-3);
+    font-size: 9px;
+}
+
+.financeiro-movimentacao-status {
+    width: fit-content;
+    padding: 5px 8px;
+    border-radius: 999px;
+    background: var(--cor-superficie-3);
+    color: var(--cor-texto-2);
+    font-size: 9px;
+    font-weight: 800;
+    text-transform: capitalize;
+}
+
+.financeiro-movimentacao-valor {
+    text-align: right;
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.financeiro-vazio {
+    padding: 34px 12px;
+    color: var(--cor-texto-3);
+    text-align: center;
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   MODAIS
+========================================================= */
+
+.modal-overlay,
+.modal-admin {
+    position: fixed;
+    z-index: 999;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(8, 8, 10, .68);
+    backdrop-filter: blur(6px);
+}
+
+.modal-overlay.ativo,
+.modal-admin.ativo {
+    display: flex;
+}
+
+.modal-card,
+.modal-admin-conteudo {
+    width: min(560px, 100%);
+    max-height: calc(100vh - 40px);
+    overflow-y: auto;
+    padding: 25px;
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio-lg);
+    background: var(--cor-superficie);
+    box-shadow: 0 30px 90px rgba(0, 0, 0, .22);
+}
+
+.modal-topo,
+.modal-admin-cabecalho {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 18px;
+    margin-bottom: 22px;
+}
+
+.modal-topo h2,
+.modal-admin-cabecalho h2 {
+    margin-top: 6px;
+    font-size: 22px;
+    letter-spacing: -.6px;
+}
+
+.modal-fechar,
+.modal-admin-fechar {
+    width: 37px;
+    height: 37px;
+    flex: 0 0 37px;
+    display: grid;
+    place-items: center;
+    border: 1px solid var(--cor-borda);
+    border-radius: 10px;
+    background: var(--cor-superficie-2);
+    color: var(--cor-texto);
+    font-size: 20px;
+}
+
+.modal-fechar:hover,
+.modal-admin-fechar:hover {
+    border-color: var(--cor-destaque);
+    color: var(--cor-destaque);
+}
+
+.campo-admin,
+.campo-servico {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 15px;
+}
+
+.campo-admin label,
+.campo-servico label {
+    color: var(--cor-texto-2);
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: .45px;
+    text-transform: uppercase;
+}
+
+.campo-admin input,
+.campo-servico input,
+.campo-servico textarea,
+.campo-admin textarea,
+.campo-admin select,
+.campo-servico select {
+    width: 100%;
+    min-height: 43px;
+    padding: 10px 12px;
+    border: 1px solid var(--cor-borda);
+    border-radius: 10px;
+    outline: none;
+    resize: vertical;
+    background: var(--cor-superficie-2);
+}
+
+.campo-admin input:focus,
+.campo-servico input:focus,
+.campo-servico textarea:focus,
+.campo-admin textarea:focus,
+.campo-admin select:focus,
+.campo-servico select:focus {
+    border-color: rgba(215, 25, 32, .7);
+    box-shadow: 0 0 0 3px rgba(215, 25, 32, .07);
+}
+
+.campos-duplos,
+.servico-form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.campo-com-sufixo {
+    position: relative;
+}
+
+.campo-com-sufixo input {
+    padding-right: 50px;
+}
+
+.campo-com-sufixo span {
+    position: absolute;
+    top: 50%;
+    right: 13px;
+    transform: translateY(-50%);
+    color: var(--cor-texto-3);
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.opcoes-servico {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    margin: 7px 0 20px;
+}
+
+.opcao-servico {
+    display: flex;
+    align-items: flex-start;
+    gap: 11px;
+    padding: 13px;
+    border: 1px solid var(--cor-borda);
+    border-radius: 11px;
+    cursor: pointer;
+}
+
+.opcao-servico input {
+    margin-top: 2px;
+    accent-color: var(--cor-destaque);
+}
+
+.opcao-servico strong {
+    display: block;
+    margin-bottom: 2px;
+    font-size: 11px;
+}
+
+.opcao-servico span {
+    display: block;
+    color: var(--cor-texto-3);
+    font-size: 9px;
+}
+
+.modal-admin-acoes {
+    display: flex;
+    justify-content: flex-end;
+    gap: 9px;
+    padding-top: 17px;
+    border-top: 1px solid var(--cor-borda);
+}
+
+.botao-modal {
+    width: 100%;
+    margin-top: 2px;
+}
+
+
+/* =========================================================
+   TEMA ESCURO
+========================================================= */
+
+body.tema-escuro {
+    --cor-fundo: #0c0d0f;
+    --cor-superficie: #16171a;
+    --cor-superficie-2: #1b1c20;
+    --cor-superficie-3: #24262b;
+
+    --cor-texto: #f4f5f7;
+    --cor-texto-2: #b2b5bd;
+    --cor-texto-3: #777c86;
+
+    --cor-borda: #2b2e34;
+    --cor-borda-forte: #3a3e46;
+
+    --cor-sidebar: #08090b;
+    --cor-sidebar-2: #141519;
+
+    --cor-destaque-suave: rgba(215, 25, 32, .12);
+
+    --sombra-card: 0 12px 38px rgba(0, 0, 0, .15);
+    --sombra-hover: 0 18px 48px rgba(0, 0, 0, .22);
+
+    --preto: var(--cor-texto);
+    --branco: var(--cor-superficie);
+    --fundo: var(--cor-fundo);
+    --cinza-50: var(--cor-superficie-2);
+    --cinza-100: var(--cor-superficie-3);
+    --cinza-200: var(--cor-borda);
+    --cinza-300: var(--cor-borda-forte);
+    --cinza-400: var(--cor-texto-3);
+    --cinza-600: var(--cor-texto-2);
+    --vermelho-claro: rgba(215, 25, 32, .12);
+}
+
+body.tema-escuro,
+body.tema-escuro html {
+    background: var(--cor-fundo);
+}
+
+body.tema-escuro input,
+body.tema-escuro textarea,
+body.tema-escuro select {
+    color-scheme: dark;
+}
+
+body.tema-escuro .evento-agenda-visual.agendamento,
+body.tema-escuro .evento-agenda,
+body.tema-escuro .servico-admin-card,
+body.tema-escuro .financeiro-movimentacao,
+body.tema-escuro .dashboard-atendimento,
+body.tema-escuro .expediente-dia-item,
+body.tema-escuro .dia-expediente {
+    background: var(--cor-superficie-2);
+}
+
+body.tema-escuro .botao-tema {
+    border-color: var(--cor-borda);
+}
+
+body.tema-escuro #login-admin {
+    background: var(--cor-superficie);
+}
+
+
+/* =========================================================
+   RESPONSIVO
+========================================================= */
+
+@media (max-width: 1180px) {
+    :root {
+        --sidebar-largura: 220px;
+    }
+
+    .admin-conteudo,
+    .admin-main {
+        padding: 36px 30px 50px;
+    }
+
+    .agenda-layout {
+        grid-template-columns: minmax(0, 1fr) 270px;
+    }
+
+    .financeiro-resumo {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .servico-admin-card {
+        grid-template-columns: minmax(180px, 1fr) 90px 90px 120px 72px;
+        gap: 11px;
+    }
+}
+
+
+@media (max-width: 720px) {
+    #painel-admin {
+        padding-left: 0;
+        padding-top: 78px;
+    }
+
+    .admin-layout {
+        display: block;
+    }
+
+    .admin-sidebar,
+    .sidebar {
+        top: 0;
+        right: 0;
+        bottom: auto;
+        width: 100%;
+        min-height: 78px;
+        max-height: none;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 14px;
+        padding: 12px 16px;
+        overflow-x: auto;
+        overflow-y: hidden;
+    }
+
+    .admin-logo,
+    .sidebar-logo {
+        min-width: max-content;
+        margin: 0 5px 0 0;
+    }
+
+    .admin-logo-marca,
+    .logo-simbolo {
+        width: 40px;
+        height: 40px;
+        flex-basis: 40px;
+    }
+
+    .admin-logo > div:last-child,
+    .sidebar-logo > div:last-child {
+        display: none;
+    }
+
+    .admin-menu,
+    .sidebar-menu {
+        flex-direction: row;
+        gap: 5px;
+    }
+
+    .admin-menu-item,
+    .sidebar-menu a {
+        width: auto;
+        min-width: max-content;
+        min-height: 40px;
+        padding: 0 12px;
+    }
+
+    .admin-menu-item.ativo::before,
+    .sidebar-menu a.ativo::before {
+        left: 11px;
+        right: 11px;
+        top: auto;
+        bottom: -1px;
+        width: auto;
+        height: 2px;
+        border-radius: 4px 4px 0 0;
+    }
+
+    .sidebar-rodape {
+        display: none;
+    }
+
+    .admin-conteudo,
+    .admin-main {
+        padding: 28px 20px 45px;
+    }
+
+    .agenda-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .agenda-lateral {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .clientes-resumo,
+    .servicos-resumo {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .servico-admin-card {
+        grid-template-columns: minmax(180px, 1fr) repeat(2, 90px);
+    }
+
+    .servico-admin-card > *:nth-child(4),
+    .servico-admin-card > *:nth-child(5) {
+        grid-column: auto;
+    }
+
+    .expediente-dia-item {
+        grid-template-columns: 1fr;
+    }
+
+    .expediente-horarios {
+        justify-content: flex-start;
+    }
+
+    .financeiro-movimentacao {
+        grid-template-columns: 110px minmax(160px, 1fr) 100px 100px;
+    }
+}
+
+
+@media (max-width: 520px) {
+    #painel-admin {
+        padding-top: 70px;
+    }
+
+    .admin-sidebar,
+    .sidebar {
+        min-height: 70px;
+        padding: 10px 12px;
+    }
+
+    .admin-logo,
+    .sidebar-logo {
+        display: none;
+    }
+
+    .admin-conteudo,
+    .admin-main {
+        padding: 22px 14px 38px;
+    }
+
+    .admin-topo,
+    .admin-cabecalho,
+    .clientes-header,
+    .servicos-cabecalho {
+        flex-direction: column;
+        gap: 16px;
+        margin-bottom: 22px;
+    }
+
+    .admin-topo h1,
+    .admin-cabecalho h1,
+    .clientes-header h1,
+    .servicos-cabecalho h1 {
+        font-size: 31px;
+    }
+
+    .admin-topo-acoes,
+    .servicos-acoes-topo {
+        width: 100%;
+    }
+
+    .admin-topo-acoes .botao-principal-admin,
+    .admin-topo-acoes .botao-secundario-admin,
+    .servicos-acoes-topo .botao-novo-servico {
+        flex: 1;
+    }
+
+    .agenda-controles {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .controle-data {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .controle-data > div {
+        min-width: 0;
+        text-align: center;
+    }
+
+    #data-agenda-admin {
+        width: 100%;
+    }
+
+    .agenda-principal,
+    .card-admin,
+    .clientes-painel,
+    .servicos-painel,
+    .card-expediente-config,
+    .financeiro-historico {
+        padding: 17px;
+        border-radius: 15px;
+    }
+
+    .agenda-cabecalho {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .agenda-visual {
+        grid-template-columns: 54px minmax(0, 1fr);
+    }
+
+    .agenda-marcador-hora {
+        right: 10px;
+    }
+
+    .evento-agenda-visual {
+        left: 7px;
+        right: 7px;
+        grid-template-columns: 56px minmax(0, 1fr);
+        gap: 8px;
+        padding: 8px;
+    }
+
+    .evento-agenda-visual .botao-remover-bloqueio {
+        display: none;
+    }
+
+    .agenda-lateral {
+        grid-template-columns: 1fr;
+    }
+
+    .clientes-resumo,
+    .servicos-resumo,
+    .financeiro-resumo,
+    #pagina-visao-geral .dashboard-resumo,
+    #pagina-visao-geral .dashboard-metricas,
+    #pagina-visao-geral .visao-geral-resumo,
+    #pagina-visao-geral .resumo-dashboard {
+        grid-template-columns: 1fr;
+    }
+
+    .clientes-painel-topo,
+    .servicos-painel-cabecalho {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .clientes-painel-topo input,
+    .servicos-busca {
+        width: 100%;
+    }
+
+    .servico-admin-card {
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+    }
+
+    .servico-admin-info {
+        grid-column: 1 / -1;
+    }
+
+    .expediente-dia-item,
+    .dia-expediente {
+        grid-template-columns: 1fr;
+    }
+
+    .expediente-dia-info {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    .expediente-horarios,
+    .horarios-dia {
+        width: 100%;
+    }
+
+    .expediente-horarios > div,
+    .campo-horario {
+        flex: 1;
+    }
+
+    .expediente-horarios input,
+    .campo-horario input {
+        width: 100%;
+    }
+
+    .financeiro-movimentacao {
+        grid-template-columns: 1fr auto;
+        gap: 8px 12px;
+    }
+
+    .financeiro-movimentacao-cliente {
+        grid-column: 1 / -1;
+        grid-row: 1;
+    }
+
+    .financeiro-movimentacao-data {
+        grid-column: 1;
+    }
+
+    .financeiro-movimentacao-status {
+        grid-column: 1;
+    }
+
+    .financeiro-movimentacao-valor {
+        grid-column: 2;
+        grid-row: 2 / 4;
+        align-self: center;
+    }
+
+    .campos-duplos,
+    .servico-form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .modal-card,
+    .modal-admin-conteudo {
+        padding: 20px;
+    }
+}
+
+
+/* =========================================================
+   ACESSIBILIDADE / DETALHES
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+    }
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+    outline: 3px solid rgba(215, 25, 32, .23);
+    outline-offset: 2px;
+}
+/* =========================================================
+   CORREÇÃO FINAL — PAINEL ÚNICO / VISÃO GERAL
+   Evita conflito com style.css e mantém a interface de
+   desktop mesmo quando o navegador está em meia tela.
+========================================================= */
+
+#painel-admin {
+    width: 100% !important;
+    max-width: none !important;
+}
+
+#painel-admin > .admin-conteudo {
+    width: 100% !important;
+    max-width: none !important;
+    min-width: 0 !important;
+}
+
+#pagina-visao-geral {
+    width: 100% !important;
+    max-width: 1500px !important;
+    min-width: 0 !important;
+}
+
+/* Cabeçalho da visão geral */
+#pagina-visao-geral .admin-topo,
+#pagina-visao-geral .admin-cabecalho {
+    width: 100% !important;
+}
+
+/*
+   O HTML da Visão Geral passou por algumas versões.
+   Estes seletores usam os IDs funcionais para encontrar
+   automaticamente o card correto, sem depender do nome
+   antigo das classes.
+*/
+
+#pagina-visao-geral :is(article, div, section):has(> #dashboard-agendamentos-hoje),
+#pagina-visao-geral :is(article, div, section):has(> #dashboard-faturamento-hoje),
+#pagina-visao-geral :is(article, div, section):has(> #dashboard-total-clientes),
+#pagina-visao-geral :is(article, div, section):has(> #dashboard-servicos-ativos) {
+    min-width: 0 !important;
+    min-height: 126px !important;
+    padding: 20px !important;
+    border: 1px solid var(--cor-borda) !important;
+    border-radius: var(--raio-md) !important;
+    background: var(--cor-superficie) !important;
+    box-shadow: var(--sombra-card) !important;
+}
+
+/* Container dos quatro indicadores */
+#pagina-visao-geral :is(div, section):has(> :is(article, div) > #dashboard-agendamentos-hoje):has(> :is(article, div) > #dashboard-faturamento-hoje),
+#pagina-visao-geral :is(div, section):has(> :is(article, div) > #dashboard-total-clientes):has(> :is(article, div) > #dashboard-servicos-ativos) {
+    width: 100% !important;
+    display: grid !important;
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    gap: 14px !important;
+    align-items: stretch !important;
+    margin-bottom: 18px !important;
+}
+
+/* Tipografia interna dos indicadores */
+#pagina-visao-geral :is(article, div, section):has(> #dashboard-agendamentos-hoje) > span,
+#pagina-visao-geral :is(article, div, section):has(> #dashboard-faturamento-hoje) > span,
+#pagina-visao-geral :is(article, div, section):has(> #dashboard-total-clientes) > span,
+#pagina-visao-geral :is(article, div, section):has(> #dashboard-servicos-ativos) > span {
+    display: block !important;
+    margin-bottom: 8px !important;
+    color: var(--cor-texto-3) !important;
+    font-size: 9px !important;
+    font-weight: 800 !important;
+    letter-spacing: .55px !important;
+    text-transform: uppercase !important;
+}
+
+#dashboard-agendamentos-hoje,
+#dashboard-faturamento-hoje,
+#dashboard-total-clientes,
+#dashboard-servicos-ativos {
+    display: block !important;
+    margin: 0 0 7px !important;
+    font-size: clamp(22px, 2vw, 30px) !important;
+    line-height: 1 !important;
+    letter-spacing: -.7px !important;
+    white-space: nowrap !important;
+}
+
+#pagina-visao-geral :is(article, div, section):has(> #dashboard-agendamentos-hoje) > p,
+#pagina-visao-geral :is(article, div, section):has(> #dashboard-faturamento-hoje) > p,
+#pagina-visao-geral :is(article, div, section):has(> #dashboard-total-clientes) > p,
+#pagina-visao-geral :is(article, div, section):has(> #dashboard-servicos-ativos) > p {
+    margin: 0 !important;
+    color: var(--cor-texto-3) !important;
+    font-size: 10px !important;
+    line-height: 1.45 !important;
+}
+
+/* Cards inferiores da Visão Geral */
+#pagina-visao-geral :is(article, div, section):has(> #dashboard-proximos-agendamentos),
+#pagina-visao-geral :is(article, div, section):has(> #dashboard-expediente-hoje) {
+    width: 100% !important;
+    min-width: 0 !important;
+    padding: 22px !important;
+    border: 1px solid var(--cor-borda) !important;
+    border-radius: var(--raio-lg) !important;
+    background: var(--cor-superficie) !important;
+    box-shadow: var(--sombra-card) !important;
+}
+
+/* Quando os dois cards inferiores compartilham um mesmo wrapper */
+#pagina-visao-geral :is(div, section):has(> :is(article, div, section) > #dashboard-proximos-agendamentos):has(> :is(article, div, section) > #dashboard-expediente-hoje) {
+    width: 100% !important;
+    display: grid !important;
+    grid-template-columns: minmax(0, 1.6fr) minmax(260px, .8fr) !important;
+    gap: 18px !important;
+    align-items: stretch !important;
+}
+
+/* Caso os próprios cards sejam filhos diretos da página */
+#pagina-visao-geral > :is(article, div, section):has(> #dashboard-proximos-agendamentos),
+#pagina-visao-geral > :is(article, div, section):has(> #dashboard-expediente-hoje) {
+    margin-top: 18px !important;
+}
+
+/* Proteção contra regras antigas de largura vindas do style.css */
+#pagina-visao-geral *,
+#pagina-financeiro *,
+#pagina-agenda *,
+#pagina-clientes *,
+#pagina-servicos *,
+#pagina-expediente * {
+    max-width: none;
+}
+
+/* Mantém a sidebar lateral em notebooks e em janela dividida. */
+@media (min-width: 721px) {
+    #painel-admin {
+        padding-top: 0 !important;
+        padding-left: var(--sidebar-largura) !important;
+    }
+
+    #painel-admin > .admin-sidebar,
+    #painel-admin > .sidebar {
+        top: 0 !important;
+        right: auto !important;
+        bottom: 0 !important;
+        width: var(--sidebar-largura) !important;
+        min-height: 100vh !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: stretch !important;
+        padding: 28px 18px 22px !important;
+        overflow-x: hidden !important;
+        overflow-y: auto !important;
+    }
+
+    #painel-admin > .admin-sidebar .admin-logo,
+    #painel-admin > .sidebar .sidebar-logo {
+        display: flex !important;
+        margin: 0 4px 34px !important;
+    }
+
+    #painel-admin > .admin-sidebar .admin-logo > div:last-child,
+    #painel-admin > .sidebar .sidebar-logo > div:last-child {
+        display: flex !important;
+    }
+
+    #painel-admin > .admin-sidebar .admin-menu,
+    #painel-admin > .sidebar .sidebar-menu {
+        flex-direction: column !important;
+        gap: 6px !important;
+    }
+
+    #painel-admin > .admin-sidebar .admin-menu-item,
+    #painel-admin > .sidebar .sidebar-menu a {
+        width: 100% !important;
+        min-width: 0 !important;
+        min-height: 44px !important;
+        padding: 0 13px !important;
+    }
+
+    #painel-admin > .admin-sidebar .admin-menu-item.ativo::before,
+    #painel-admin > .sidebar .sidebar-menu a.ativo::before {
+        left: -1px !important;
+        right: auto !important;
+        top: 10px !important;
+        bottom: 10px !important;
+        width: 3px !important;
+        height: auto !important;
+    }
+
+    #painel-admin > .admin-conteudo {
+        padding: 38px 36px 55px !important;
+    }
+}
+
+@media (max-width: 1100px) and (min-width: 721px) {
+    #pagina-visao-geral :is(div, section):has(> :is(article, div) > #dashboard-agendamentos-hoje):has(> :is(article, div) > #dashboard-faturamento-hoje),
+    #pagina-visao-geral :is(div, section):has(> :is(article, div) > #dashboard-total-clientes):has(> :is(article, div) > #dashboard-servicos-ativos) {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    }
+
+    #pagina-visao-geral :is(div, section):has(> :is(article, div, section) > #dashboard-proximos-agendamentos):has(> :is(article, div, section) > #dashboard-expediente-hoje) {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+@media (max-width: 720px) {
+    #pagina-visao-geral :is(div, section):has(> :is(article, div) > #dashboard-agendamentos-hoje):has(> :is(article, div) > #dashboard-faturamento-hoje),
+    #pagina-visao-geral :is(div, section):has(> :is(article, div) > #dashboard-total-clientes):has(> :is(article, div) > #dashboard-servicos-ativos) {
+        grid-template-columns: 1fr !important;
+    }
+
+    #pagina-visao-geral :is(div, section):has(> :is(article, div, section) > #dashboard-proximos-agendamentos):has(> :is(article, div, section) > #dashboard-expediente-hoje) {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+/* =========================================================
+   POLIMENTO VISUAL — COMPATÍVEL COM CLARO E ESCURO
+========================================================= */
+
+/* Base */
+body {
+    letter-spacing: -0.01em;
+}
+
+#painel-admin {
+    background:
+        radial-gradient(circle at 82% 0%, rgba(215, 25, 32, .035), transparent 28%),
+        var(--cor-fundo);
+}
+
+.admin-main {
+    padding-top: 38px !important;
+    padding-bottom: 70px !important;
+}
+
+.pagina-admin {
+    max-width: 1480px !important;
+}
+
+/* Sidebar continua escura nos dois temas */
+.sidebar {
+    padding: 30px 16px 22px !important;
+    background:
+        linear-gradient(180deg, rgba(255,255,255,.012), transparent 16%),
+        var(--cor-sidebar) !important;
+}
+
+.sidebar-logo-simbolo,
+.admin-logo-marca,
+.logo-simbolo {
+    width: 42px !important;
+    height: 42px !important;
+    flex: 0 0 42px !important;
+    display: grid !important;
+    place-items: center !important;
+    border-radius: 12px !important;
+    background: linear-gradient(145deg, #e82a34, #bd111b) !important;
+    color: #fff !important;
+    font-size: 11px !important;
+    font-weight: 900 !important;
+    box-shadow: 0 10px 25px rgba(215, 25, 32, .18) !important;
+}
+
+.sidebar-menu {
+    gap: 7px !important;
+}
+
+.admin-menu-item {
+    min-height: 46px !important;
+    padding: 0 14px !important;
+    border-radius: 12px !important;
+    font-size: 12px !important;
+    font-weight: 700 !important;
+}
+
+.admin-menu-item.ativo {
+    background: #1d2025 !important;
+    color: #fff !important;
+}
+
+.admin-menu-item.ativo::before {
+    top: 9px !important;
+    bottom: 9px !important;
+}
+
+.sidebar-rodape {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    padding-top: 18px !important;
+}
+
+.sidebar-rodape .botao-tema {
+    width: 42px !important;
+    min-width: 42px !important;
+    flex: 0 0 42px !important;
+}
+
+/* Cabeçalhos */
+.admin-topo {
+    margin-bottom: 26px !important;
+}
+
+.admin-etiqueta,
+.admin-subtitulo,
+.admin-eyebrow,
+.card-admin-etiqueta {
+    font-size: 9px !important;
+    font-weight: 900 !important;
+    letter-spacing: 1.75px !important;
+}
+
+.admin-topo h1,
+.admin-cabecalho h1,
+.clientes-header h1,
+.servicos-cabecalho h1 {
+    margin-top: 7px !important;
+    font-size: clamp(31px, 3vw, 40px) !important;
+    line-height: 1.03 !important;
+    letter-spacing: -1.55px !important;
+}
+
+.admin-topo p,
+.admin-cabecalho p,
+.clientes-header p,
+.servicos-cabecalho p {
+    margin-top: 8px !important;
+    max-width: 780px !important;
+    font-size: 13px !important;
+    line-height: 1.55 !important;
+}
+
+/* Cards */
+.card-admin,
+.agenda-principal,
+.agenda-controles,
+.clientes-painel,
+.servicos-painel,
+.card-expediente-config,
+.financeiro-historico,
+.card-resumo-dashboard,
+.card-resumo-clientes,
+.card-resumo-servico {
+    border-color: var(--cor-borda) !important;
+    background: var(--cor-superficie) !important;
+    box-shadow:
+        var(--sombra-card),
+        inset 0 1px 0 rgba(255,255,255,.012) !important;
+}
+
+.card-admin,
+.agenda-principal,
+.clientes-painel,
+.servicos-painel,
+.card-expediente-config,
+.financeiro-historico {
+    border-radius: 18px !important;
+}
+
+/* Visão geral */
+.resumo-dashboard {
+    display: grid !important;
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    gap: 14px !important;
+    margin-bottom: 18px !important;
+}
+
+.card-resumo-dashboard {
+    position: relative !important;
+    min-height: 132px !important;
+    padding: 20px !important;
+    overflow: hidden !important;
+    border: 1px solid var(--cor-borda) !important;
+    border-radius: 16px !important;
+    background: var(--cor-superficie) !important;
+    transition: transform .18s, border-color .18s !important;
+}
+
+.card-resumo-dashboard:hover {
+    transform: translateY(-2px);
+    border-color: var(--cor-borda-forte) !important;
+}
+
+.card-resumo-dashboard > span {
+    display: block !important;
+    margin-bottom: 12px !important;
+    color: var(--cor-texto-3) !important;
+    font-size: 8px !important;
+    font-weight: 900 !important;
+    letter-spacing: .75px !important;
+    text-transform: uppercase !important;
+}
+
+.card-resumo-dashboard > strong {
+    display: block !important;
+    margin-bottom: 8px !important;
+    color: var(--cor-texto) !important;
+    font-size: 27px !important;
+    line-height: 1 !important;
+    letter-spacing: -.7px !important;
+}
+
+.card-resumo-dashboard > small {
+    color: var(--cor-texto-2) !important;
+    font-size: 10px !important;
+}
+
+.dashboard-grid {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1.75fr) minmax(260px, .75fr) !important;
+    gap: 18px !important;
+}
+
+.card-admin-cabecalho {
+    display: flex !important;
+    align-items: flex-start !important;
+    justify-content: space-between !important;
+    gap: 16px !important;
+    margin-bottom: 18px !important;
+}
+
+.card-admin-cabecalho h2,
+.dashboard-grid .card-admin > h2 {
+    margin-top: 5px !important;
+    font-size: 21px !important;
+    letter-spacing: -.45px !important;
+}
+
+.botao-link-admin {
+    min-height: 34px !important;
+    padding: 0 11px !important;
+    border: 1px solid var(--cor-borda) !important;
+    border-radius: 9px !important;
+    background: var(--cor-superficie-2) !important;
+    color: var(--cor-texto-2) !important;
+    font-size: 10px !important;
+    font-weight: 800 !important;
+}
+
+.botao-link-admin:hover {
+    border-color: var(--cor-borda-forte) !important;
+    color: var(--cor-texto) !important;
+}
+
+.dashboard-atendimento {
+    min-height: 62px !important;
+    border-color: var(--cor-borda) !important;
+    background: var(--cor-superficie-2) !important;
+}
+
+/* Agenda */
+.agenda-controles {
+    min-height: 74px !important;
+    border-radius: 15px !important;
+}
+
+.controle-data button {
+    width: 40px !important;
+    height: 40px !important;
+    border: 1px solid var(--cor-borda) !important;
+    background: var(--cor-superficie-3) !important;
+    color: var(--cor-texto) !important;
+}
+
+.controle-data button:hover {
+    border-color: var(--cor-borda-forte) !important;
+}
+
+#data-agenda-admin {
+    height: 42px !important;
+    border-color: var(--cor-borda) !important;
+    background: var(--cor-superficie-2) !important;
+    color: var(--cor-texto) !important;
+}
+
+.agenda-layout {
+    grid-template-columns: minmax(0, 1fr) 290px !important;
+}
+
+.agenda-cabecalho h2 {
+    font-size: 20px !important;
+    letter-spacing: -.4px !important;
+}
+
+.evento-agenda-visual {
+    grid-template-columns: 72px minmax(0, 1fr) !important;
+    gap: 10px !important;
+    left: 9px !important;
+    right: 9px !important;
+    padding: 9px 11px !important;
+    border-radius: 11px !important;
+}
+
+.evento-agenda-visual.agendamento {
+    border-color: var(--cor-borda) !important;
+    border-left-color: var(--cor-texto) !important;
+    background: var(--cor-superficie-2) !important;
+}
+
+.evento-agenda-visual.bloqueio {
+    border-color: rgba(215,25,32,.24) !important;
+    border-left-color: var(--cor-destaque) !important;
+    background: var(--cor-destaque-suave) !important;
+}
+
+/* Clientes e Serviços */
+.clientes-resumo,
+.servicos-resumo {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 14px !important;
+    margin-bottom: 18px !important;
+}
+
+.card-resumo-clientes,
+.card-resumo-servico {
+    min-height: 105px !important;
+    padding: 19px 20px !important;
+    border: 1px solid var(--cor-borda) !important;
+    border-radius: 15px !important;
+    background: var(--cor-superficie) !important;
+}
+
+.card-resumo-clientes > span,
+.card-resumo-servico > span {
+    display: block !important;
+    margin-bottom: 9px !important;
+    color: var(--cor-texto-3) !important;
+    font-size: 8px !important;
+    font-weight: 900 !important;
+    text-transform: uppercase !important;
+}
+
+.card-resumo-clientes > strong,
+.card-resumo-servico > strong {
+    display: block !important;
+    color: var(--cor-texto) !important;
+    font-size: 26px !important;
+    line-height: 1 !important;
+}
+
+.clientes-painel-topo,
+.servicos-painel-topo {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 18px !important;
+    padding-bottom: 18px !important;
+    border-bottom: 1px solid var(--cor-borda) !important;
+}
+
+.busca-admin {
+    width: min(290px, 100%) !important;
+}
+
+.busca-admin input {
+    width: 100% !important;
+    height: 42px !important;
+    padding: 0 13px !important;
+    border: 1px solid var(--cor-borda) !important;
+    border-radius: 10px !important;
+    outline: none !important;
+    background: var(--cor-superficie-2) !important;
+    color: var(--cor-texto) !important;
+}
+
+.busca-admin input::placeholder {
+    color: var(--cor-texto-3) !important;
+}
+
+.tabela-admin-container {
+    width: 100% !important;
+    overflow-x: auto !important;
+}
+
+.tabela-admin {
+    width: 100% !important;
+    min-width: 760px !important;
+    border-collapse: collapse !important;
+}
+
+.tabela-admin thead th {
+    padding: 14px 12px !important;
+    border-bottom: 1px solid var(--cor-borda) !important;
+    color: var(--cor-texto-3) !important;
+    font-size: 8px !important;
+    font-weight: 900 !important;
+    text-align: left !important;
+    text-transform: uppercase !important;
+}
+
+.tabela-admin tbody td {
+    padding: 15px 12px !important;
+    border-bottom: 1px solid var(--cor-borda) !important;
+    color: var(--cor-texto-2) !important;
+    font-size: 10px !important;
+    vertical-align: middle !important;
+}
+
+.tabela-admin tbody tr:hover {
+    background: rgba(127,127,135,.05) !important;
+}
+
+.servico-admin-card {
+    grid-template-columns: minmax(230px, 1.35fr) 95px 90px 105px 76px !important;
+    min-height: 82px !important;
+    border-color: var(--cor-borda) !important;
+    background: var(--cor-superficie-2) !important;
+}
+
+.servico-admin-card:hover {
+    border-color: var(--cor-borda-forte) !important;
+    background: var(--cor-superficie-3) !important;
+}
+
+/* Expediente */
+.expediente-dia-item {
+    min-height: 84px !important;
+    padding: 16px 18px !important;
+    border-color: var(--cor-borda) !important;
+    background: var(--cor-superficie-2) !important;
+}
+
+.expediente-dia-item.ativo {
+    border-color: rgba(215,25,32,.32) !important;
+    background:
+        linear-gradient(90deg, rgba(215,25,32,.04), transparent 55%),
+        var(--cor-superficie-2) !important;
+}
+
+.expediente-horarios input {
+    height: 41px !important;
+    border-color: var(--cor-borda) !important;
+    background: var(--cor-superficie) !important;
+    color: var(--cor-texto) !important;
+}
+
+.expediente-rodape {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 18px !important;
+    margin-top: 20px !important;
+    padding-top: 18px !important;
+    border-top: 1px solid var(--cor-borda) !important;
+}
+
+/* Financeiro */
+.financeiro-resumo {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+}
+
+.financeiro-resumo > .card-admin {
+    min-height: 148px !important;
+    padding: 20px !important;
+    border-radius: 16px !important;
+}
+
+.financeiro-resumo > .card-admin > strong {
+    display: block !important;
+    margin-bottom: 7px !important;
+    color: var(--cor-texto) !important;
+    font-size: 23px !important;
+    line-height: 1 !important;
+}
+
+.financeiro-resumo > .card-admin > p {
+    color: var(--cor-texto-2) !important;
+    font-size: 10px !important;
+}
+
+.financeiro-historico-topo {
+    border-bottom-color: var(--cor-borda) !important;
+}
+
+.financeiro-movimentacao {
+    min-height: 64px !important;
+    border-color: var(--cor-borda) !important;
+    background: var(--cor-superficie-2) !important;
+}
+
+.financeiro-movimentacao:hover {
+    border-color: var(--cor-borda-forte) !important;
+    background: var(--cor-superficie-3) !important;
+}
+
+/* Inputs e botões */
+.botao-principal-admin {
+    min-height: 44px !important;
+    border-radius: 10px !important;
+    background: linear-gradient(180deg, #e82631, #d61722) !important;
+}
+
+.botao-secundario-admin {
+    min-height: 44px !important;
+    border-color: var(--cor-borda) !important;
+    background: var(--cor-superficie-2) !important;
+    color: var(--cor-texto-2) !important;
+}
+
+.botao-secundario-admin:hover {
+    border-color: var(--cor-borda-forte) !important;
+    background: var(--cor-superficie-3) !important;
+    color: var(--cor-texto) !important;
+}
+
+.campo-admin input,
+.campo-admin textarea,
+.campo-admin select {
+    border-color: var(--cor-borda) !important;
+    background: var(--cor-superficie-2) !important;
+    color: var(--cor-texto) !important;
+}
+
+/* Modal */
+.modal-card {
+    border-color: var(--cor-borda) !important;
+    background: var(--cor-superficie) !important;
+}
+
+.modal-fechar {
+    border-color: var(--cor-borda) !important;
+    background: var(--cor-superficie-2) !important;
+    color: var(--cor-texto-2) !important;
+}
+
+/* Tema escuro: apenas reforça a aparência premium */
+body.tema-escuro {
+    color-scheme: dark;
+}
+
+body.tema-escuro #painel-admin {
+    background:
+        radial-gradient(circle at 82% 0%, rgba(226,31,43,.035), transparent 28%),
+        var(--cor-fundo);
+}
+
+/* Responsividade */
+@media (max-width: 1180px) and (min-width: 721px) {
+    .resumo-dashboard {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    }
+
+    .dashboard-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    .financeiro-resumo {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    }
+}
+
+@media (max-width: 720px) {
+    .resumo-dashboard,
+    .clientes-resumo,
+    .servicos-resumo,
+    .financeiro-resumo {
+        grid-template-columns: 1fr !important;
+    }
+
+    .dashboard-grid,
+    .agenda-layout {
+        grid-template-columns: 1fr !important;
+    }
+
+    .clientes-painel-topo,
+    .servicos-painel-topo,
+    .expediente-rodape {
+        align-items: stretch !important;
+        flex-direction: column !important;
+    }
+
+    .busca-admin {
+        width: 100% !important;
+    }
+
+    .servico-admin-card {
+        grid-template-columns: 1fr 1fr !important;
+    }
+
+    .servico-admin-info {
+        grid-column: 1 / -1 !important;
+    }
+}
+

@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Serviços | Barber SaaS</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/admin.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/tema.css"
+    >
+</head>
+
+<body>
+
+    <div class="admin-layout">
+
+        <!-- SIDEBAR -->
+        <aside class="admin-sidebar">
+
+            <div class="admin-logo">
+                <strong>RL</strong>
+
+                <div>
+                    <h2>RODRIGO LIMA</h2>
+                    <span>BARBEARIA</span>
+                </div>
+            </div>
+
+            <nav class="admin-menu">
+
+                <a href="admin.html">
+                    Visão geral
+                </a>
+
+                <a href="agenda.html">
+                    Agenda
+                </a>
+
+                <a href="#">
+                    Clientes
+                </a>
+
+                <a
+                    href="servicos.html"
+                    class="ativo"
+                >
+                    Serviços
+                </a>
+
+                <a href="expediente.html">
+                    Expediente
+                </a>
+
+                <a href="#">
+                    Financeiro
+                </a>
+
+            </nav>
+
+        </aside>
+
+
+        <!-- CONTEÚDO -->
+        <main class="admin-main">
+
+            <header class="servicos-cabecalho">
+
+                <div>
+
+                    <span class="admin-etiqueta">
+                        SERVIÇOS
+                    </span>
+
+                    <h1>
+                        Seus serviços
+                    </h1>
+
+                    <p>
+                        Gerencie preços, duração e disponibilidade
+                        para agendamento.
+                    </p>
+
+                </div>
+
+                <div class="servicos-acoes-topo">
+
+                    <button
+                        class="botao-tema"
+                        id="botao-tema"
+                        type="button"
+                    >
+                        ☀️
+                    </button>
+
+                    <button
+                        class="botao-novo-servico"
+                        id="botao-novo-servico"
+                        type="button"
+                    >
+                        + Novo serviço
+                    </button>
+
+                </div>
+
+            </header>
+
+
+            <!-- RESUMO -->
+            <section class="servicos-resumo">
+
+                <article class="servico-resumo-card">
+
+                    <span>
+                        Serviços cadastrados
+                    </span>
+
+                    <strong id="total-servicos">
+                        0
+                    </strong>
+
+                </article>
+
+
+                <article class="servico-resumo-card">
+
+                    <span>
+                        Ativos
+                    </span>
+
+                    <strong id="total-servicos-ativos">
+                        0
+                    </strong>
+
+                </article>
+
+
+                <article class="servico-resumo-card">
+
+                    <span>
+                        Agendamento online
+                    </span>
+
+                    <strong id="total-servicos-online">
+                        0
+                    </strong>
+
+                </article>
+
+            </section>
+
+
+            <!-- LISTAGEM -->
+            <section class="servicos-painel">
+
+                <div class="servicos-painel-cabecalho">
+
+                    <div>
+                        <h2>
+                            Catálogo
+                        </h2>
+
+                        <p>
+                            Serviços oferecidos pela barbearia.
+                        </p>
+                    </div>
+
+
+                    <div class="servicos-busca">
+
+                        <input
+                            id="busca-servico"
+                            type="search"
+                            placeholder="Buscar serviço..."
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="lista-servicos-admin"
+                    id="lista-servicos-admin"
+                >
+
+                    <div class="estado-carregando-admin">
+                        Carregando serviços...
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <!-- MODAL -->
+    <div
+        class="modal-admin"
+        id="modal-servico"
+    >
+
+        <div class="modal-admin-conteudo servico-modal-conteudo">
+
+            <div class="modal-admin-cabecalho">
+
+                <div>
+
+                    <span class="admin-etiqueta">
+                        SERVIÇO
+                    </span>
+
+                    <h2 id="titulo-modal-servico">
+                        Novo serviço
+                    </h2>
+
+                </div>
+
+                <button
+                    id="fechar-modal-servico"
+                    class="modal-admin-fechar"
+                    type="button"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <form id="form-servico">
+
+                <input
+                    id="servico-id"
+                    type="hidden"
+                >
+
+
+                <div class="campo-servico">
+
+                    <label for="servico-nome">
+                        Nome do serviço
+                    </label>
+
+                    <input
+                        id="servico-nome"
+                        type="text"
+                        placeholder="Ex.: Corte masculino"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="campo-servico">
+
+                    <label for="servico-descricao">
+                        Descrição
+                    </label>
+
+                    <textarea
+                        id="servico-descricao"
+                        rows="3"
+                        placeholder="Descreva brevemente o serviço"
+                    ></textarea>
+
+                </div>
+
+
+                <div class="servico-form-grid">
+
+                    <div class="campo-servico">
+
+                        <label for="servico-preco">
+                            Preço
+                        </label>
+
+                        <input
+                            id="servico-preco"
+                            type="number"
+                            min="0"
+                            step="0.01"
+                            placeholder="40,00"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="campo-servico">
+
+                        <label for="servico-duracao">
+                            Duração
+                        </label>
+
+                        <div class="campo-com-sufixo">
+
+                            <input
+                                id="servico-duracao"
+                                type="number"
+                                min="5"
+                                step="5"
+                                placeholder="40"
+                                required
+                            >
+
+                            <span>
+                                min
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="campo-servico">
+
+                    <label for="servico-categoria">
+                        Categoria
+                    </label>
+
+                    <input
+                        id="servico-categoria"
+                        type="text"
+                        placeholder="Ex.: Cabelo"
+                    >
+
+                </div>
+
+
+                <div class="opcoes-servico">
+
+                    <label class="opcao-servico">
+
+                        <input
+                            id="servico-ativo"
+                            type="checkbox"
+                            checked
+                        >
+
+                        <div>
+                            <strong>
+                                Serviço ativo
+                            </strong>
+
+                            <span>
+                                O serviço pode ser utilizado no sistema.
+                            </span>
+                        </div>
+
+                    </label>
+
+
+                    <label class="opcao-servico">
+
+                        <input
+                            id="servico-online"
+                            type="checkbox"
+                            checked
+                        >
+
+                        <div>
+                            <strong>
+                                Permitir agendamento online
+                            </strong>
+
+                            <span>
+                                Clientes poderão selecionar este serviço.
+                            </span>
+                        </div>
+
+                    </label>
+
+                </div>
+
+
+                <div class="modal-admin-acoes">
+
+                    <button
+                        id="cancelar-servico"
+                        type="button"
+                        class="botao-secundario-admin"
+                    >
+                        Cancelar
+                    </button>
+
+                    <button
+                        id="salvar-servico"
+                        type="submit"
+                        class="botao-principal-admin"
+                    >
+                        Salvar serviço
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- SUPABASE -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <script src="../js/supabase.js"></script>
+
+    <script src="servicos.js"></script>
+
+    <script src="../js/tema.js"></script>
+
+</body>
+
+</html>

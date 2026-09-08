@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Agenda | Barber SaaS</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/admin.css"
+    >
+
+    <link 
+        rel="stylesheet" 
+        href="../css/tema.css"
+    >
+
+</head>
+
+<body>
+
+    <div class="admin-layout">
+
+        <!-- MENU LATERAL -->
+        <aside class="sidebar">
+
+            <div class="sidebar-logo">
+                <div class="logo-simbolo">
+                    RL
+                </div>
+
+                <div>
+                    <strong>
+                        RODRIGO LIMA
+                    </strong>
+
+                    <span>
+                        BARBEARIA
+                    </span>
+                </div>
+            </div>
+
+
+            <nav class="sidebar-menu">
+
+                <a href="#">
+                    Visão geral
+                </a>
+
+                <a
+                    href="agenda.html"
+                    class="ativo"
+                >
+                    Agenda
+                </a>
+
+                <a href="#">
+                    Clientes
+                </a>
+
+                <a href="#">
+                    Serviços
+                </a>
+
+                <a href="#">
+                    Financeiro
+                </a>
+
+            </nav>
+
+
+            <div class="sidebar-rodape">
+
+                <button type="button">
+                    Configurações
+                </button>
+
+            </div>
+
+        </aside>
+
+
+        <!-- CONTEÚDO -->
+        <main class="admin-main">
+
+            <!-- TOPO -->
+            <header class="admin-topo">
+
+                <div>
+
+                    <span class="admin-etiqueta">
+                        AGENDA
+                    </span>
+
+                    <h1>
+                        Organize seus horários
+                    </h1>
+
+                    <p>
+                        Visualize atendimentos, bloqueie períodos
+                        e organize sua rotina.
+                    </p>
+
+                </div>
+
+
+                <div class="admin-topo-acoes">
+
+                    <button
+                      id="botao-tema"
+                      class="botao-tema"
+                      type="button"
+
+                     aria-label="Alternar tema"
+                    >
+
+                     🌙
+                    </button>
+
+                    <button
+                        id="botao-hoje"
+                        class="botao-secundario-admin"
+                        type="button"
+                    >
+                        Hoje
+                    </button>
+
+                    <button
+                        id="botao-novo-bloqueio"
+                        class="botao-principal-admin"
+                        type="button"
+                    >
+                        + Bloquear horário
+                    </button>
+
+                </div>
+
+            </header>
+
+
+            <!-- CONTROLES -->
+            <section class="agenda-controles">
+
+                <div class="controle-data">
+
+                    <button
+                        id="data-anterior"
+                        type="button"
+                    >
+                        ←
+                    </button>
+
+                    <div>
+
+                        <span>
+                            Data selecionada
+                        </span>
+
+                        <strong id="data-selecionada-texto">
+                            09 de setembro de 2026
+                        </strong>
+
+                    </div>
+
+                    <button
+                        id="data-proxima"
+                        type="button"
+                    >
+                        →
+                    </button>
+
+                </div>
+
+
+                <input
+                    id="data-agenda-admin"
+                    type="date"
+                >
+
+            </section>
+
+
+            <!-- GRID -->
+            <section class="agenda-layout">
+
+                <!-- COLUNA PRINCIPAL -->
+                <div class="agenda-principal">
+
+                    <div class="agenda-cabecalho">
+
+                        <div>
+                            <h2>
+                                Agenda do dia
+                            </h2>
+
+                            <p id="resumo-agenda-dia">
+                                Carregando...
+                            </p>
+                        </div>
+
+                        <div class="agenda-legenda">
+
+                            <span>
+                                <i class="legenda-agendamento"></i>
+                                Agendamento
+                            </span>
+
+                            <span>
+                                <i class="legenda-bloqueio"></i>
+                                Bloqueio
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        id="timeline-agenda"
+                        class="timeline-agenda"
+                    >
+
+                        <div class="estado-carregando-admin">
+                            Carregando agenda...
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- COLUNA DIREITA -->
+                <aside class="agenda-lateral">
+
+                    <section class="card-admin">
+
+                        <span class="card-admin-etiqueta">
+                            HOJE
+                        </span>
+
+                        <h3>
+                            Resumo
+                        </h3>
+
+
+                        <div class="metricas-agenda">
+
+                            <div>
+                                <span>
+                                    Agendamentos
+                                </span>
+
+                                <strong id="total-agendamentos-dia">
+                                    0
+                                </strong>
+                            </div>
+
+
+                            <div>
+                                <span>
+                                    Horas bloqueadas
+                                </span>
+
+                                <strong id="total-horas-bloqueadas">
+                                    0h
+                                </strong>
+                            </div>
+
+
+                            <div>
+                                <span>
+                                    Faturamento previsto
+                                </span>
+
+                                <strong id="faturamento-previsto-dia">
+                                    R$ 0,00
+                                </strong>
+                            </div>
+
+                        </div>
+
+                    </section>
+
+
+                    <section class="card-admin">
+
+                        <span class="card-admin-etiqueta">
+                            EXPEDIENTE
+                        </span>
+
+                        <h3>
+                            Horário do dia
+                        </h3>
+
+                        <div id="expediente-dia">
+
+                            <p>
+                                Carregando...
+                            </p>
+
+                        </div>
+
+                    </section>
+
+                </aside>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <!-- MODAL BLOQUEIO -->
+    <div
+        id="modal-bloqueio"
+        class="modal-overlay"
+    >
+
+        <div class="modal-card">
+
+            <div class="modal-topo">
+
+                <div>
+                    <span class="admin-etiqueta">
+                        NOVO BLOQUEIO
+                    </span>
+
+                    <h2>
+                        Bloquear período
+                    </h2>
+                </div>
+
+                <button
+                    id="fechar-modal-bloqueio"
+                    class="modal-fechar"
+                    type="button"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <form id="form-bloqueio">
+
+                <div class="campo-admin">
+
+                    <label for="bloqueio-data">
+                        Data
+                    </label>
+
+                    <input
+                        id="bloqueio-data"
+                        type="date"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="campos-duplos">
+
+                    <div class="campo-admin">
+
+                        <label for="bloqueio-inicio">
+                            Início
+                        </label>
+
+                        <input
+                            id="bloqueio-inicio"
+                            type="time"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="campo-admin">
+
+                        <label for="bloqueio-fim">
+                            Fim
+                        </label>
+
+                        <input
+                            id="bloqueio-fim"
+                            type="time"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div class="campo-admin">
+
+                    <label for="bloqueio-motivo">
+                        Motivo
+                    </label>
+
+                    <input
+                        id="bloqueio-motivo"
+                        type="text"
+                        placeholder="Ex.: Almoço, compromisso, folga..."
+                    >
+
+                </div>
+
+
+                <button
+                    class="botao-principal-admin botao-modal"
+                    type="submit"
+                >
+                    Salvar bloqueio
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <script src="../js/supabase.js"></script>
+
+    <script src="agenda.js"></script>
+
+    <script src="../js/tema.js"></script>
+
+</body>
+
+</html>

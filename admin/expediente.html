@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Expediente | Barber SaaS</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/admin.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/tema.css"
+    >
+</head>
+
+<body>
+
+    <div class="admin-layout">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+
+            <div class="sidebar-marca">
+                <div class="marca-simbolo">
+                    RL
+                </div>
+
+                <div>
+                    <strong>RODRIGO LIMA</strong>
+                    <span>BARBEARIA</span>
+                </div>
+            </div>
+
+            <nav class="sidebar-menu">
+
+                <a href="admin.html">
+                    Visão geral
+                </a>
+
+                <a href="agenda.html">
+                    Agenda
+                </a>
+
+                <a href="#">
+                    Clientes
+                </a>
+
+                <a href="#">
+                    Serviços
+                </a>
+
+                <a
+                    href="expediente.html"
+                    class="ativo"
+                >
+                    Expediente
+                </a>
+
+                <a href="#">
+                    Financeiro
+                </a>
+
+            </nav>
+
+        </aside>
+
+
+        <!-- CONTEÚDO -->
+        <main class="admin-main">
+
+            <header class="admin-topo">
+
+                <div>
+
+                    <span class="admin-etiqueta">
+                        EXPEDIENTE
+                    </span>
+
+                    <h1>
+                        Horários de trabalho
+                    </h1>
+
+                    <p>
+                        Defina os dias e horários em que
+                        os clientes podem realizar agendamentos.
+                    </p>
+
+                </div>
+
+                <div class="admin-topo-acoes">
+
+                    <button
+                        id="botao-tema"
+                        class="botao-tema"
+                        type="button"
+                        aria-label="Alternar tema"
+                    >
+                        🌙
+                    </button>
+
+                </div>
+
+            </header>
+
+
+            <!-- CARD PRINCIPAL -->
+            <section class="card-expediente-config">
+
+                <div class="cabecalho-expediente-config">
+
+                    <div>
+                        <h2>
+                            Expediente semanal
+                        </h2>
+
+                        <p>
+                            Ative os dias de atendimento e
+                            configure os horários.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <form id="form-expediente">
+
+                    <div
+                        id="lista-dias-expediente"
+                        class="lista-dias-expediente"
+                    >
+
+                        <!--
+                            O JavaScript vai criar
+                            os sete dias aqui.
+                        -->
+
+                    </div>
+
+
+                    <div class="acoes-expediente">
+
+                        <span
+                            id="status-expediente"
+                            class="status-expediente"
+                        ></span>
+
+                        <button
+                            type="submit"
+                            class="botao-salvar-expediente"
+                        >
+                            Salvar alterações
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <!-- SUPABASE -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <script src="../js/supabase.js"></script>
+
+    <script src="expediente.js?v=2"></script>
+
+    <script src="../js/tema.js"></script>
+
+</body>
+
+</html>
