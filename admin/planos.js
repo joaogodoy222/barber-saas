@@ -324,7 +324,7 @@
                 ? "Fazer upgrade"
                 : "Escolher plano";
 
-        botao.addEventListener("click", function () {
+        botao.addEventListener("click", async function () {
             const mensagem = obterElemento(
                 "mensagem-planos-admin"
             );
@@ -333,22 +333,99 @@
                 return;
             }
 
-            if (ordemDestino > ordemAtual) {
-                mensagem.textContent =
-                    `O upgrade para ${plano.nome} já está preparado. ` +
-                    "A próxima etapa será conectar o pagamento para confirmar a troca.";
-                return;
-            }
-
             if (ordemDestino < ordemAtual) {
                 mensagem.textContent =
-                    `O downgrade para ${plano.nome} é compatível com ` +
-                    "a configuração atual. A troca será liberada junto com o sistema de pagamento.";
+                    `O downgrade para ${plano.nome} será tratado no próximo ciclo de cobrança.`;
                 return;
             }
 
-            mensagem.textContent =
-                "A alteração de assinatura será liberada quando conectarmos o pagamento.";
+            try {
+                botao.disabled = true;
+                botao.textContent = "Abrindo pagamento...";
+                mensagem.textContent =
+                    `Preparando a assinatura do plano ${plano.nome}...`;
+
+                const contexto = await resolverContexto();
+                const barbeariaId = contexto.barbearia.id;
+
+                const {
+                    data: sessao,
+                    error: erroSessao
+                } = await supabaseV2.auth.getSession();
+
+                if (erroSessao) {
+                    throw erroSessao;
+                }
+
+                const accessToken =
+                    sessao?.session?.access_token;
+
+                if (!accessToken) {
+                    throw new Error(
+                        "Sua sessão expirou. Entre novamente no painel."
+                    );
+                }
+
+                const resposta = await fetch(
+                    "https://acmhagdtakcrtghfcfsa.supabase.co/functions/v1/criar-assinatura-mercado-pago",
+                    {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                            "Authorization": `Bearer ${accessToken}`
+                        },
+                        body: JSON.stringify({
+                            barbearia_id: barbeariaId,
+                            plano_codigo: plano.codigo
+                        })
+                    }
+                );
+
+                let resultado = null;
+
+                try {
+                    resultado = await resposta.json();
+                } catch {
+                    resultado = null;
+                }
+
+                if (!resposta.ok) {
+                    throw new Error(
+                        resultado?.erro ||
+                        "Não foi possível iniciar o pagamento."
+                    );
+                }
+
+                const checkoutUrl =
+                    resultado?.checkout_url;
+
+                if (!checkoutUrl) {
+                    throw new Error(
+                        "O Mercado Pago não retornou o link de pagamento."
+                    );
+                }
+
+                mensagem.textContent =
+                    "Redirecionando para o Mercado Pago...";
+
+                window.location.href = checkoutUrl;
+
+            } catch (erro) {
+                console.error(
+                    "Erro ao iniciar assinatura:",
+                    erro
+                );
+
+                mensagem.textContent =
+                    erro?.message ||
+                    "Não foi possível iniciar a assinatura.";
+
+                botao.disabled = false;
+                botao.textContent =
+                    ordemDestino > ordemAtual
+                        ? "Fazer upgrade"
+                        : "Escolher plano";
+            }
         });
 
         return botao;
