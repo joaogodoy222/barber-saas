@@ -9,6 +9,7 @@
     let assinaturaAtual = null;
     let planosDisponiveis = [];
     let carregando = false;
+    let confirmandoRetornoMercadoPago = false;
 
     const ORDEM_PLANOS = {
         essencial: 1,
@@ -617,6 +618,132 @@
         }
     }
 
+    async function confirmarRetornoMercadoPago() {
+    if (confirmandoRetornoMercadoPago) {
+        return;
+    }
+
+    const parametros =
+        new URLSearchParams(window.location.search);
+
+    if (parametros.get("pagamento") !== "retorno") {
+        return;
+    }
+
+    confirmandoRetornoMercadoPago = true;
+
+    try {
+        const contexto = await resolverContexto();
+        const barbeariaId = contexto?.barbearia?.id;
+
+        if (!barbeariaId) {
+            throw new Error(
+                "Não foi possível identificar a barbearia."
+            );
+        }
+
+        const {
+            data: sessao,
+            error: erroSessao
+        } = await supabaseV2.auth.getSession();
+
+        if (erroSessao) {
+            throw erroSessao;
+        }
+
+        const accessToken =
+            sessao?.session?.access_token;
+
+        if (!accessToken) {
+            throw new Error(
+                "Sua sessão expirou. Entre novamente no painel."
+            );
+        }
+
+        const resposta = await fetch(
+            "https://acmhagdtakcrtghfcfsa.supabase.co/functions/v1/confirmar-assinatura-mercado-pago",
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${accessToken}`
+                },
+                body: JSON.stringify({
+                    barbearia_id: barbeariaId
+                })
+            }
+        );
+
+        let resultado = null;
+
+        try {
+            resultado = await resposta.json();
+        } catch {
+            resultado = null;
+        }
+
+        if (!resposta.ok) {
+            throw new Error(
+                resultado?.erro ||
+                "Não foi possível confirmar o pagamento."
+            );
+        }
+
+        const mensagem =
+            obterElemento("mensagem-planos-admin");
+
+        if (resultado?.processado === true) {
+            assinaturaAtual = null;
+
+            if (mensagem) {
+                mensagem.textContent =
+                    "Pagamento confirmado. Seu novo plano já está ativo.";
+            }
+
+            await carregarTelaPlanos();
+        } else {
+            if (mensagem) {
+                mensagem.textContent =
+                    resultado?.mensagem ||
+                    "O pagamento ainda está sendo confirmado.";
+            }
+        }
+
+        parametros.delete("pagamento");
+
+        const novaQuery =
+            parametros.toString();
+
+        const novaUrl =
+            window.location.pathname +
+            (novaQuery ? `?${novaQuery}` : "") +
+            window.location.hash;
+
+        window.history.replaceState(
+            {},
+            "",
+            novaUrl
+        );
+
+    } catch (erro) {
+        console.error(
+            "Erro ao confirmar retorno do Mercado Pago:",
+            erro
+        );
+
+        const mensagem =
+            obterElemento("mensagem-planos-admin");
+
+        if (mensagem) {
+            mensagem.textContent =
+                erro?.message ||
+                "Não foi possível confirmar o pagamento.";
+        }
+    } finally {
+        confirmandoRetornoMercadoPago = false;
+    }
+}
+
 
     function paginaPlanosEstaAtiva() {
         return Boolean(
@@ -629,6 +756,7 @@
     document.addEventListener(
         "DOMContentLoaded",
         function () {
+             confirmarRetornoMercadoPago();
             const botaoPlanos =
                 document.querySelector(
                     '.admin-menu-item[data-pagina="planos"]'
